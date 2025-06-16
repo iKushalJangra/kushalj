@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergy & Immunology Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --allergy: #dbeafe;
+            --allergy-text: #1d4ed8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--allergy);
+            color: var(--allergy-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Allergy & Immunology Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="allergy-immunology.html">Allergy & Immunology</a>
+                </div>
+                <p>Expert care for allergies, asthma, immune deficiencies, and autoimmune disorders</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Allergy & Immunology Physicians</h2>
+                        <p>Meet our team of board-certified allergists and immunologists dedicated to diagnosing and treating allergic conditions and immune system disorders.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Food Allergies</option>
+                                <option>Asthma</option>
+                                <option>Immunodeficiency</option>
+                                <option>Drug Allergies</option>
+                                <option>Atopic Dermatitis</option>
+                                <option>Allergic Rhinitis</option>
+                                <option>Autoimmune Disorders</option>
+                                <option>Pediatric Allergy</option>
+                                <option>Immunotherapy</option>
+                                <option>Mast Cell Disorders</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Allergy Center</option>
+                                <option>Immunology Institute</option>
+                                <option>Main Hospital</option>
+                                <option>Pediatric Allergy Clinic</option>
+                                <option>Asthma & Allergy Center</option>
+                                <option>Autoimmune Clinic</option>
+                                <option>Food Allergy Institute</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1-12 (Previous doctors) -->
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Carter</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Food Allergy Specialist</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and management of food allergies, including oral immunotherapy.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Bennett</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Asthma Specialist</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in severe asthma management and biologic therapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Thompson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunodeficiency</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in primary and secondary immune deficiency disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Drug Allergies</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in drug allergy testing and desensitization protocols.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Wilson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Atopic Dermatitis</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in eczema and allergic skin conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Johnson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergic Rhinitis</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in hay fever and environmental allergy management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Noah Adams</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Autoimmune Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in autoimmune conditions affecting multiple systems.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-noah-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=noah-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Chen</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Pediatric Allergy</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in childhood allergies and immune development.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Liam Rodriguez</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Insect Allergy</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in venom immunotherapy for insect sting allergies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-liam-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=liam-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Williams</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Occupational Allergy</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in workplace-related allergic conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Kim</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunotherapy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in allergy shots and sublingual immunotherapy.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Brown</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Mast Cell Disorders</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in mastocytosis and mast cell activation syndrome.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Alexander Wright</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Eosinophilic Disorders</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in eosinophilic esophagitis and related conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-alexander-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=alexander-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria Scott</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Latex Allergy</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in latex allergy diagnosis and management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Reed</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Chronic Urticaria</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in chronic hives and angioedema.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Hayes</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Prevention</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on early intervention and allergy prevention strategies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-hayes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-hayes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Bennett</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Anaphylaxis</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in severe allergic reactions and emergency management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Foster</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Contact Dermatitis</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in allergic contact dermatitis and patch testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Miles Patterson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunology Research</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on cutting-edge immunology research and clinical trials.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-miles-patterson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=miles-patterson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Simmons</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Pediatric Asthma</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in childhood asthma and allergy management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-simmons.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-simmons" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 21 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Theodore Rivera</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Testing</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in comprehensive allergy testing methods.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-theodore-rivera.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=theodore-rivera" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 22 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Cora Jenkins</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Sinusitis</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in allergic sinus conditions and treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-cora-jenkins.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=cora-jenkins" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 23 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Arthur Brooks</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunoglobulin Therapy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in IVIG and subcutaneous immunoglobulin treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-arthur-brooks.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=arthur-brooks" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 24 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Price</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Oral Allergy Syndrome</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in pollen-food allergy syndrome management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-price.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-price" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 25 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Calvin Wood</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Desensitization</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in rapid desensitization protocols for drug allergies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-calvin-wood.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=calvin-wood" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 26 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lydia Coleman</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Chronic Cough</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in allergy-related chronic cough conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lydia-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lydia-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 27 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Oscar Hughes</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Vaccine Allergy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in vaccine reactions and safe vaccination protocols.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-oscar-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=oscar-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 28 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ruby Sanders</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Education</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on patient education and allergy prevention programs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ruby-sanders.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ruby-sanders" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 29 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Simon Foster</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Autoimmune Skin Disorders</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in autoimmune conditions affecting the skin.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-simon-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=simon-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Clara Bennett</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Genetics</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on genetic factors in allergic disease development.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-clara-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=clara-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 31 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Felix Carter</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Epidemiology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Studies patterns and causes of allergic diseases in populations.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-felix-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=felix-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 32 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Iris Morgan</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Complement Disorders</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in complement system deficiencies and disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-iris-morgan.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=iris-morgan" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 33 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Walter Reed</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunodeficiency Research</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on research into primary immunodeficiency diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-walter-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=walter-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 34 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mabel Howard</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Diagnostics</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in advanced allergy testing and diagnostic techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mabel-howard.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mabel-howard" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 35 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Leonard Price</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Biologic Therapies</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in biologic treatments for allergic diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-leonard-price.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=leonard-price" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 36 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Estelle Murphy</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Nutrition</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on nutritional aspects of allergy management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-estelle-murphy.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=estelle-murphy" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 37 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Eugene Foster</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Rare Allergies</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and treatment of rare allergic conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-eugene-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=eugene-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 38 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Agnes Cooper</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Pediatric Immunodeficiency</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in immune system disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-agnes-cooper.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=agnes-cooper" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 39 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Clarence Mitchell</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Technology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on technological advances in allergy treatment.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-clarence-mitchell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=clarence-mitchell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Harriet Nelson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Rehabilitation</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in rehabilitation approaches for chronic allergies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-harriet-nelson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=harriet-nelson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 41 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Raymond Hughes</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Environmental Allergies</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in environmental allergen identification and avoidance.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-raymond-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=raymond-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 42 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Florence Baker</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Prevention</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on preventing allergy development in at-risk patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-florence-baker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=florence-baker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 43 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Stanley Powell</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Immunology Education</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in physician and patient education programs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-stanley-powell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=stanley-powell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 44 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Matilda Russell</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Policy</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Works on public health policies related to allergic diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-matilda-russell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=matilda-russell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 45 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Norman Foster</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Clinical Immunology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on clinical aspects of immune system disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-norman-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=norman-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 46 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Edith Simmons</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Telemedicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Pioneer in telemedicine approaches for allergy care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-edith-simmons.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=edith-simmons" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 47 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Clifford Bennett</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Surgery</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in surgical approaches for allergy-related conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-clifford-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=clifford-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 48 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Agnes Thompson</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Geriatric Allergy</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in allergy management for elderly patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-agnes-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=agnes-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 49 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Herbert Wood</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Allergy Clinical Trials</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Leads clinical trials for new allergy treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-herbert-wood.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=herbert-wood" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Dorothy Mitchell</h3>
+                                <p class="doctor-title">MD, Allergy & Immunology</p>
+                                <span class="doctor-specialty">Comprehensive Allergy Care</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides comprehensive care for complex allergic conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-dorothy-mitchell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=dorothy-mitchell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Allergy Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-allergies"></i> Allergy Testing</a></li>
+                        <li><a href="#"><i class="fas fa-syringe"></i> Immunotherapy</a></li>
+                        <li><a href="#"><i class="fas fa-lungs"></i> Asthma Management</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> Food Allergy Care</a></li>
+                        <li><a href="#"><i class="fas fa-pills"></i> Drug Allergy Evaluation</a></li>
+                        <li><a href="#"><i class="fas fa-bug"></i> Insect Allergy Care</a></li>
+                        <li><a href="#"><i class="fas fa-dna"></i> Immunodeficiency Testing</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Pediatric Allergy</a></li>
+                        <li><a href="#"><i class="fas fa-flask"></i> Clinical Trials</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title">Resources</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-book"></i> Allergy Guides</a></li>
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Events & Workshops</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> Webinars</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper"></i> Research Publications</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

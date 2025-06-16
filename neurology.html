@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --neurology: #dbeafe;
+            --neurology-text: #1e40af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--neurology);
+            color: var(--neurology-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Neurology Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="neurology.html">Neurology</a>
+                </div>
+                <p>Comprehensive neurological care including diagnosis, treatment, and management of disorders affecting the brain and nervous system</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Neurology Physicians</h2>
+                        <p>Meet our team of board-certified neurologists dedicated to providing exceptional neurological care with the latest diagnostic tools and treatment options.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>General Neurology</option>
+                                <option>Stroke Neurology</option>
+                                <option>Epilepsy</option>
+                                <option>Movement Disorders</option>
+                                <option>Neuroimmunology</option>
+                                <option>Headache Medicine</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Neurology Center</option>
+                                <option>Main Hospital</option>
+                                <option>Neuroscience Institute</option>
+                                <option>Downtown Clinic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Carter</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Stroke Neurology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in acute stroke management and cerebrovascular diseases with advanced intervention techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Bennett</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Epilepsy</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in diagnosing and treating seizure disorders with advanced EEG monitoring and treatment options.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Thompson</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Movement Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in Parkinson's disease, tremors, and other movement disorders with advanced therapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Neuroimmunology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on multiple sclerosis and other neuroimmunological disorders with cutting-edge treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Wilson</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">General Neurology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive neurological care including diagnosis and management of neurological conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Johnson</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Headache Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in migraine and other headache disorders with comprehensive treatment approaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Noah Adams</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Neuromuscular Medicine</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in diagnosing and treating neuromuscular disorders including ALS and peripheral neuropathies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-noah-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=noah-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Chen</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Cognitive Neurology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in Alzheimer's disease and other memory disorders with comprehensive care approaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Liam Rodriguez</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Neurocritical Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on critical neurological conditions including traumatic brain injury and stroke in ICU settings.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-liam-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=liam-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Williams</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Pediatric Neurology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides neurological care for children with epilepsy, developmental disorders, and other conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Kim</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Autonomic Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in dysautonomia and other autonomic nervous system disorders with comprehensive care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Brown</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Neuro-oncology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in diagnosing and treating brain and spinal cord tumors with multidisciplinary approaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Neurology Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-brain"></i> Neurological Consultation</a></li>
+                        <li><a href="#"><i class="fas fa-head-side-virus"></i> EEG Testing</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> EMG/Nerve Conduction Studies</a></li>
+                        <li><a href="#"><i class="fas fa-magnet"></i> MRI/CT Interpretation</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Autonomic Testing</a></li>
+                        <li><a href="#"><i class="fas fa-vial"></i> Lumbar Puncture</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Botox Therapy</a></li>
+                        <li><a href="#"><i class="fas fa-pills"></i> Infusion Therapy</a></li>
+                        <li><a href="#"><i class="fas fa-wheelchair"></i> Deep Brain Stimulation</a></li>
+                        <li><a href="#"><i class="fas fa-user-md"></i> Neuro-rehabilitation</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Neurology Resources</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-book"></i> Understanding Neurological Disorders</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> Nutrition for Brain Health</a></li>
+                        <li><a href="#"><i class="fas fa-dumbbell"></i> Exercise and Neurological Health</a></li>
+                        <li><a href="#"><i class="fas fa-moon"></i> Sleep and Neurological Function</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Managing Chronic Neurological Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple filter functionality would be added here in a real implementation
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Education | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radiology: #dbeafe;
+            --radiology-text: #1e40af;
+            --cardiology: #fee2e2;
+            --cardiology-text: #991b1b;
+            --neurology: #e0f2fe;
+            --neurology-text: #075985;
+            --oncology: #fce7f3;
+            --oncology-text: #831843;
+            --orthopedics: #dcfce7;
+            --orthopedics-text: #166534;
+            --pulmonology: #ecfdf5;
+            --pulmonology-text: #047857;
+            --gastroenterology: #f5f3ff;
+            --gastroenterology-text: #5b21b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Education Spotlight */
+        .education-spotlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .spotlight-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .spotlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .spotlight-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .spotlight-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .spotlight-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .spotlight-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .spotlight-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .spotlight-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .spotlight-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .spotlight-meta i {
+            color: var(--primary);
+        }
+        
+        .spotlight-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .spotlight-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Education Topics */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .topic-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .topic-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .icon-radiology {
+            background: var(--radiology);
+            color: var(--radiology-text);
+        }
+        
+        .icon-cardiology {
+            background: var(--cardiology);
+            color: var(--cardiology-text);
+        }
+        
+        .icon-neurology {
+            background: var(--neurology);
+            color: var(--neurology-text);
+        }
+        
+        .icon-oncology {
+            background: var(--oncology);
+            color: var(--oncology-text);
+        }
+        
+        .icon-orthopedics {
+            background: var(--orthopedics);
+            color: var(--orthopedics-text);
+        }
+        
+        .icon-pulmonology {
+            background: var(--pulmonology);
+            color: var(--pulmonology-text);
+        }
+        
+        .icon-gastroenterology {
+            background: var(--gastroenterology);
+            color: var(--gastroenterology-text);
+        }
+        
+        .topic-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .topic-content {
+            padding: 20px;
+        }
+        
+        .topic-resources {
+            list-style: none;
+        }
+        
+        .topic-resource {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .topic-resource:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-link {
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--primary);
+        }
+        
+        .resource-link i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Video Library */
+        .video-library {
+            margin-top: 60px;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .video-thumbnail {
+            height: 180px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .video-thumbnail:hover::after {
+            background: rgba(37, 99, 235, 0.7);
+        }
+        
+        .video-content {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Patient Stories */
+        .stories-section {
+            margin-top: 60px;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .story-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .story-content {
+            padding: 20px;
+        }
+        
+        .story-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .story-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .story-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .story-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .story-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Downloadable Resources */
+        .resources-section {
+            margin-top: 60px;
+        }
+        
+        .resources-list {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .resource-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .resource-details h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .resource-meta {
+            color: var(--gray);
+            font-size: 0.85rem;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .resource-download {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .resource-download:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .education-spotlight {
+                grid-template-columns: 1fr;
+            }
+            
+            .topics-grid, .videos-grid, .stories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .resource-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .resource-download {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .spotlight-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Patient Education</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="resources.html">Resources</a>
+                    <span>/</span>
+                    <a href="patient-education.html">Patient Education</a>
+                </div>
+                <p>Empowering you with knowledge to make informed decisions about your health and treatment options.</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="education-spotlight">
+                <!-- Spotlight 1 -->
+                <div class="spotlight-card">
+                    <div class="spotlight-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                        <span class="spotlight-badge">Featured</span>
+                    </div>
+                    <div class="spotlight-content">
+                        <h3 class="spotlight-title">Understanding Your Radiology Results</h3>
+                        <div class="spotlight-meta">
+                            <span><i class="fas fa-clock"></i> 10 min read</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated Jun 2023</span>
+                        </div>
+                        <p class="spotlight-desc">Learn how to interpret common terms in your radiology reports and what they mean for your diagnosis and treatment plan.</p>
+                        <div class="spotlight-actions">
+                            <a href="#" class="btn btn-primary">Read Article</a>
+                            <a href="#" class="btn btn-outline">Save for Later</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spotlight 2 -->
+                <div class="spotlight-card">
+                    <div class="spotlight-image" style="background-image: url('https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                        <span class="spotlight-badge">New</span>
+                    </div>
+                    <div class="spotlight-content">
+                        <h3 class="spotlight-title">Preparing for Your MRI Scan</h3>
+                        <div class="spotlight-meta">
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated May 2023</span>
+                        </div>
+                        <p class="spotlight-desc">A step-by-step guide to help you prepare for your MRI scan, including what to expect during the procedure and safety considerations.</p>
+                        <div class="spotlight-actions">
+                            <a href="#" class="btn btn-primary">Read Guide</a>
+                            <a href="#" class="btn btn-outline">Print Checklist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Education by Topic</h2>
+                <p>Browse our comprehensive health education resources organized by medical specialty.</p>
+            </div>
+            
+            <div class="topics-grid">
+                <!-- Topic 1 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-radiology">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <h3 class="topic-title">Radiology</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> CT Scan Patient Guide
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding Mammograms
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Pediatric Imaging FAQs
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Reducing Radiation Exposure
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Topic 2 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-cardiology">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="topic-title">Cardiology</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Heart Healthy Diet Guide
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding Echocardiograms
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Managing High Blood Pressure
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Cardiac Rehab Exercises
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Topic 3 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-neurology">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="topic-title">Neurology</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding MRI Brain Scans
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Stroke Warning Signs
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Managing Migraines
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Epilepsy First Aid
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Topic 4 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-oncology">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="topic-title">Oncology</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding PET Scans
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Cancer Screening Guidelines
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Managing Chemo Side Effects
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Radiation Therapy FAQ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Topic 5 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-orthopedics">
+                            <i class="fas fa-bone"></i>
+                        </div>
+                        <h3 class="topic-title">Orthopedics</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding X-ray Results
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Joint Replacement Guide
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Fracture Care Instructions
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Physical Therapy Exercises
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Topic 6 -->
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon icon-pulmonology">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <h3 class="topic-title">Pulmonology</h3>
+                    </div>
+                    <div class="topic-content">
+                        <ul class="topic-resources">
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Understanding Chest X-rays
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> COPD Management Guide
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Asthma Action Plan
+                                </a>
+                            </li>
+                            <li class="topic-resource">
+                                <a href="#" class="resource-link">
+                                    <i class="fas fa-file-alt"></i> Lung Cancer Screening
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-library">
+                <div class="section-title">
+                    <h2>Video Education Library</h2>
+                    <p>Watch our collection of educational videos to learn about procedures, treatments, and health topics.</p>
+                </div>
+                
+                <div class="videos-grid">
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="video-content">
+                            <h3 class="video-title">What to Expect During Your MRI</h3>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 4:32 min</span>
+                                <span><i class="fas fa-eye"></i> 12,345 views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="video-content">
+                            <h3 class="video-title">Understanding Breast Cancer Screening</h3>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 6:15 min</span>
+                                <span><i class="fas fa-eye"></i> 8,921 views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="video-content">
+                            <h3 class="video-title">Cardiac CT Scan Explained</h3>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 5:47 min</span>
+                                <span><i class="fas fa-eye"></i> 7,543 views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stories-section">
+                <div class="section-title">
+                    <h2>Patient Stories</h2>
+                    <p>Read experiences from other patients who have gone through similar health journeys.</p>
+                </div>
+                
+                <div class="stories-grid">
+                    <!-- Story 1 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="story-content">
+                            <h3 class="story-title">My Experience With Breast Cancer Screening</h3>
+                            <p class="story-excerpt">Sarah shares her journey through mammograms and biopsies, offering tips for others preparing for screening.</p>
+                            <a href="#" class="story-link">Read Full Story <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 2 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="story-content">
+                            <h3 class="story-title">Living With Back Pain: My MRI Journey</h3>
+                            <p class="story-excerpt">Michael discusses his experience with chronic back pain, diagnostic imaging, and finding the right treatment.</p>
+                            <a href="#" class="story-link">Read Full Story <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 3 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="story-content">
+                            <h3 class="story-title">Pediatric Radiology: A Parent's Perspective</h3>
+                            <p class="story-excerpt">The Johnson family shares their experience with their child's diagnostic imaging and how they prepared.</p>
+                            <a href="#" class="story-link">Read Full Story <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resources-section">
+                <div class="section-title">
+                    <h2>Downloadable Resources</h2>
+                    <p>Access printable guides, checklists, and worksheets to support your healthcare journey.</p>
+                </div>
+                
+                <div class="resources-list">
+                    <!-- Resource 1 -->
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>MRI Preparation Checklist</h4>
+                                <div class="resource-meta">
+                                    <span>PDF • 2 pages</span>
+                                    <span>256 KB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="resource-download">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    
+                    <!-- Resource 2 -->
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Questions to Ask Your Radiologist</h4>
+                                <div class="resource-meta">
+                                    <span>PDF • 1 page</span>
+                                    <span>180 KB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="resource-download">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    
+                    <!-- Resource 3 -->
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Medical Imaging Journal</h4>
+                                <div class="resource-meta">
+                                    <span>PDF • 12 pages</span>
+                                    <span>1.2 MB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="resource-download">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    
+                    <!-- Resource 4 -->
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Radiation Safety Guide</h4>
+                                <div class="resource-meta">
+                                    <span>PDF • 4 pages</span>
+                                    <span>420 KB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="resource-download">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    
+                    <!-- Resource 5 -->
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Medical History Form</h4>
+                                <div class="resource-meta">
+                                    <span>DOCX • 3 pages</span>
+                                    <span>320 KB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="resource-download">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to handle download button clicks
+        document.querySelectorAll('.resource-download').forEach(button => {
+            button.addEventListener('click', function() {
+                const resourceTitle = this.closest('.resource-item').querySelector('h4').textContent;
+                alert(`Downloading: ${resourceTitle}\n\n(Note: This is a demo. In a real application, this would trigger a file download.)`);
+            });
+        });
+
+        // Handle video thumbnail clicks
+        document.querySelectorAll('.video-thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const videoTitle = this.closest('.video-card').querySelector('.video-title').textContent;
+                alert(`Playing: ${videoTitle}\n\n(Note: This is a demo. In a real application, this would open a video player.)`);
+            });
+        });
+    </script>
+</body>
+</html>

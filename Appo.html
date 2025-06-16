@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --error: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .appointment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Form Styles */
+        .appointment-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 1rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        /* Time Slot Selection */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .time-slot {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .time-slot.unavailable {
+            background: #f8f9fa;
+            color: var(--gray);
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+        
+        /* Calendar */
+        .calendar {
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .calendar-title {
+            font-weight: 600;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav-btn {
+            background: var(--light-gray);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .calendar-weekday {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--gray);
+            padding: 5px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .calendar-day:hover {
+            background: var(--light-gray);
+        }
+        
+        .calendar-day.selected {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .calendar-day.today {
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .calendar-day.today::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .success-message i {
+            color: var(--success);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .success-message h3 {
+            margin-bottom: 10px;
+            color: var(--success);
+        }
+        
+        /* Appointment Summary */
+        .appointment-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .summary-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--light-gray);
+        }
+        
+        .detail-label {
+            color: var(--gray);
+        }
+        
+        .detail-value {
+            font-weight: 600;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Book an Appointment</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="appointment.html">Appointment</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="appointment-container">
+                <div class="appointment-form">
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Appointment Booked Successfully!</h3>
+                        <p>Your appointment has been confirmed. We've sent the details to your email.</p>
+                        <p>Appointment ID: <strong>HP2023-05642</strong></p>
+                    </div>
+                    
+                    <h2 class="form-title">Patient Information</h2>
+                    <form id="appointmentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" id="dob" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <div style="display: flex; gap: 15px;">
+                                <label style="display: flex; align-items: center; gap: 5px;">
+                                    <input type="radio" name="gender" value="male" checked> Male
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 5px;">
+                                    <input type="radio" name="gender" value="female"> Female
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 5px;">
+                                    <input type="radio" name="gender" value="other"> Other
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <h2 class="form-title" style="margin-top: 40px;">Appointment Details</h2>
+                        
+                        <div class="form-group">
+                            <label for="appointmentType" class="form-label">Appointment Type</label>
+                            <select id="appointmentType" class="form-control" required>
+                                <option value="">Select appointment type</option>
+                                <option value="routine">Routine Checkup</option>
+                                <option value="followup">Follow-up Visit</option>
+                                <option value="sick">Sick Visit</option>
+                                <option value="vaccination">Vaccination</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reason" class="form-label">Reason for Visit</label>
+                            <textarea id="reason" class="form-control" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <div class="calendar-title">November 2023</div>
+                                <div class="calendar-nav">
+                                    <button class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="calendar-grid">
+                                <div class="calendar-weekday">Sun</div>
+                                <div class="calendar-weekday">Mon</div>
+                                <div class="calendar-weekday">Tue</div>
+                                <div class="calendar-weekday">Wed</div>
+                                <div class="calendar-weekday">Thu</div>
+                                <div class="calendar-weekday">Fri</div>
+                                <div class="calendar-weekday">Sat</div>
+                                
+                                <!-- Calendar days would be generated with JavaScript -->
+                                <div class="calendar-day disabled">29</div>
+                                <div class="calendar-day disabled">30</div>
+                                <div class="calendar-day disabled">31</div>
+                                <div class="calendar-day">1</div>
+                                <div class="calendar-day">2</div>
+                                <div class="calendar-day">3</div>
+                                <div class="calendar-day">4</div>
+                                
+                                <div class="calendar-day">5</div>
+                                <div class="calendar-day">6</div>
+                                <div class="calendar-day">7</div>
+                                <div class="calendar-day">8</div>
+                                <div class="calendar-day">9</div>
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day">14</div>
+                                <div class="calendar-day">15</div>
+                                <div class="calendar-day">16</div>
+                                <div class="calendar-day">17</div>
+                                <div class="calendar-day">18</div>
+                                
+                                <div class="calendar-day">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day">21</div>
+                                <div class="calendar-day selected">22</div>
+                                <div class="calendar-day">23</div>
+                                <div class="calendar-day">24</div>
+                                <div class="calendar-day">25</div>
+                                
+                                <div class="calendar-day">26</div>
+                                <div class="calendar-day">27</div>
+                                <div class="calendar-day today">28</div>
+                                <div class="calendar-day">29</div>
+                                <div class="calendar-day">30</div>
+                                <div class="calendar-day disabled">1</div>
+                                <div class="calendar-day disabled">2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Available Time Slots</label>
+                            <div class="time-slots">
+                                <div class="time-slot unavailable">8:00 AM</div>
+                                <div class="time-slot unavailable">8:30 AM</div>
+                                <div class="time-slot">9:00 AM</div>
+                                <div class="time-slot">9:30 AM</div>
+                                <div class="time-slot">10:00 AM</div>
+                                <div class="time-slot">10:30 AM</div>
+                                <div class="time-slot selected">11:00 AM</div>
+                                <div class="time-slot">11:30 AM</div>
+                                <div class="time-slot">1:00 PM</div>
+                                <div class="time-slot">1:30 PM</div>
+                                <div class="time-slot">2:00 PM</div>
+                                <div class="time-slot">2:30 PM</div>
+                                <div class="time-slot">3:00 PM</div>
+                                <div class="time-slot">3:30 PM</div>
+                                <div class="time-slot">4:00 PM</div>
+                                <div class="time-slot">4:30 PM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="insurance" class="form-label">Insurance Provider</label>
+                            <select id="insurance" class="form-control">
+                                <option value="">Select insurance provider</option>
+                                <option value="aetna">Aetna</option>
+                                <option value="bluecross">Blue Cross Blue Shield</option>
+                                <option value="cigna">Cigna</option>
+                                <option value="united">UnitedHealthcare</option>
+                                <option value="medicare">Medicare</option>
+                                <option value="medicaid">Medicaid</option>
+                                <option value="none">None/Self-pay</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="policyNumber" class="form-label">Insurance Policy Number</label>
+                            <input type="text" id="policyNumber" class="form-control">
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label style="display: flex; align-items: flex-start; gap: 10px;">
+                                <input type="checkbox" required style="margin-top: 3px;">
+                                <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand that my appointment may be rescheduled if I arrive more than 15 minutes late.</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
+                    </form>
+                    
+                    <div class="appointment-summary">
+                        <h3 class="summary-title">Appointment Summary</h3>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Date:</span>
+                            <span class="detail-value">November 22, 2023</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Time:</span>
+                            <span class="detail-value">11:00 AM</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">30 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location:</span>
+                            <span class="detail-value">Main Campus</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Address:</span>
+                            <span class="detail-value">123 Medical Drive, Suite 200</span>
+                        </div>
+                        
+                        <div style="margin-top: 30px; padding: 15px; background: #f8fafc; border-radius: 8px;">
+                            <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 10px;"><i class="fas fa-info-circle" style="color: var(--primary); margin-right: 5px;"></i> Please bring your insurance card and photo ID to your appointment.</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 5px;"></i> Arrive 15 minutes early for paperwork.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">HealthPlus</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 20px; line-height: 1.6;">Providing exceptional healthcare services with compassion and innovation.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Contact Us</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Medical Drive, Health City</p>
+                    <p style="color: #cbd5e1; margin-bottom: 15px;"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> (800) 555-1234</p>
+                    <p style="color: #cbd5e1;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@healthplus.com</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="find-doctor.html" style="color: #cbd5e1; text-decoration: none;">Find a Doctor</a></li>
+                        <li style="margin-bottom: 10px;"><a href="services.html" style="color: #cbd5e1; text-decoration: none;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="patient-portal.html" style="color: #cbd5e1; text-decoration: none;">Patient Portal</a></li>
+                        <li style="margin-bottom: 10px;"><a href="careers.html" style="color: #cbd5e1; text-decoration: none;">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid #334155; color: #94a3b8;">
+                <p>&copy; <span id="year"></span> HealthPlus Medical Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, this would submit to a server
+            // For demo purposes, we'll just show the success message
+            document.querySelector('.success-message').style.display = 'block';
+            
+            // Scroll to the success message
+            document.querySelector('.success-message').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Reset form after 5 seconds (for demo purposes)
+            setTimeout(function() {
+                document.getElementById('appointmentForm').reset();
+                document.querySelector('.success-message').style.display = 'none';
+            }, 10000);
+        });
+        
+        // Time slot selection
+        document.querySelectorAll('.time-slot:not(.unavailable)').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Update the appointment summary
+                document.querySelector('.detail-value:nth-of-type(2)').textContent = this.textContent;
+            });
+        });
+        
+        // Calendar day selection
+        document.querySelectorAll('.calendar-day:not(.disabled)').forEach(day => {
+            day.addEventListener('click', function() {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Update the appointment summary date
+                const month = document.querySelector('.calendar-title').textContent;
+                const date = this.textContent;
+                document.querySelector('.detail-value:first-of-type').textContent = `${month} ${date}, 2023`;
+            });
+        });
+        
+        // Calendar navigation (simplified for demo)
+        document.querySelectorAll('.calendar-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // In a real app, this would load the previous/next month
+                alert('Calendar navigation would be implemented in a production environment');
+            });
+        });
+    </script>
+</body>
+</html>

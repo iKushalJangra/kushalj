@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmonology Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-light: #14b8a6;
+            --primary-dark: #0f766e;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --pulmonology: #ccfbf1;
+            --pulmonology-text: #0d9488;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--pulmonology);
+            color: var(--pulmonology-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Pulmonology Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="pulmonology.html">Pulmonology</a>
+                </div>
+                <p>Comprehensive respiratory care including diagnosis, treatment, and management of lung diseases and breathing disorders</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Pulmonology Physicians</h2>
+                        <p>Meet our team of board-certified pulmonologists dedicated to providing exceptional respiratory care with the latest diagnostic tools and treatment options.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>General Pulmonology</option>
+                                <option>Critical Care Medicine</option>
+                                <option>Interventional Pulmonology</option>
+                                <option>Sleep Medicine</option>
+                                <option>COPD Specialist</option>
+                                <option>Cystic Fibrosis</option>
+                                <option>Interstitial Lung Disease</option>
+                                <option>Pulmonary Hypertension</option>
+                                <option>Lung Transplant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Lung Center</option>
+                                <option>Main Hospital</option>
+                                <option>Respiratory Institute</option>
+                                <option>Sleep Clinic</option>
+                                <option>Critical Care Unit</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1-12 (from previous code) -->
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Alexander Wright</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Bronchiectasis</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in the diagnosis and management of bronchiectasis and chronic airway diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-alexander-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=alexander-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria Scott</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Infections</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in treating complex pulmonary infections including tuberculosis and fungal diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Reed</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Lung Cancer Screening</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in early detection and management of lung cancer through advanced screening.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Hayes</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Rehabilitation</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on improving quality of life through comprehensive pulmonary rehab programs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-hayes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-hayes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Bennett</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Occupational Asthma</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in work-related asthma and other occupational respiratory conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Foster</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Rare Lung Diseases</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in diagnosing and managing rare and complex pulmonary disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Miles Patterson</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Function Research</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on advancing pulmonary function testing methodologies and research.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-miles-patterson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=miles-patterson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Simmons</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pediatric Pulmonology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in respiratory disorders in children from infancy through adolescence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-simmons.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-simmons" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 21 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Owen Carter</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Advanced Bronchoscopy</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in advanced diagnostic and therapeutic bronchoscopic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-owen-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=owen-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 22 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nova Richardson</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Vascular Disease</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in disorders affecting the blood vessels of the lungs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nova-richardson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nova-richardson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 23 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Silas Coleman</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Critical Care Ultrasound</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in point-of-care ultrasound for critical respiratory conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-silas-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=silas-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 24 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ruby Mitchell</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Palliative Pulmonology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on symptom management for patients with advanced lung diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ruby-mitchell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ruby-mitchell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 25 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Levi Washington</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Exercise Physiology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in cardiopulmonary exercise testing and respiratory adaptation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-levi-washington.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=levi-washington" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 26 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Aurora Hughes</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Lung Nodule Clinic</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in evaluation and management of pulmonary nodules and early lung cancer.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-aurora-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=aurora-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 27 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Maxwell Flores</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Interventional Pulmonology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive procedures for airway and pleural diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-maxwell-flores.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=maxwell-flores" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 28 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ivy Peterson</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Fibrosis</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on diagnosis and treatment of idiopathic pulmonary fibrosis.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ivy-peterson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ivy-peterson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 29 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Barnes</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Sleep-Disordered Breathing</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in complex sleep apnea and non-CPAP treatment options.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-barnes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-barnes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Murphy</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">COPD Research</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on clinical research and innovative treatments for COPD.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-murphy.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-murphy" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 31 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Caleb Wright</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pleuroscopy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in minimally invasive pleural procedures and diagnostics.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-caleb-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=caleb-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 32 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hannah Baker</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Embolism</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and management of acute and chronic pulmonary embolism.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hannah-baker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hannah-baker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 33 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Dylan Cooper</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Respiratory Failure</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in management of acute and chronic respiratory failure.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-dylan-cooper.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=dylan-cooper" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 34 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Parker</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Lung Volume Reduction</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in surgical and bronchoscopic lung volume reduction for emphysema.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-parker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-parker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 35 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Noah Evans</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Immunology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on immune-mediated lung diseases and novel immunotherapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-noah-evans.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=noah-evans" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 36 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Chloe Foster</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Hypertension</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and treatment of pulmonary arterial hypertension.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-chloe-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=chloe-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 37 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mason Rivera</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Lung Transplant</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in pre- and post-transplant care for lung transplant patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mason-rivera.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mason-rivera" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 38 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Simmons</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Diagnostics</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in advanced pulmonary function testing and diagnostic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-simmons.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-simmons" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 39 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Peterson</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Interstitial Lung Disease</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and management of fibrotic lung diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-peterson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-peterson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Hughes</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Critical Care Pulmonology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in management of critically ill patients with respiratory failure.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 41 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Gabriel Russell</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Rehabilitation</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on improving functional capacity in patients with chronic lung disease.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-gabriel-russell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=gabriel-russell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 42 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Stella Butler</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Asthma Specialist</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in severe asthma and novel biologic therapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-stella-butler.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=stella-butler" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 43 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Barnes</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Hypertension</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in right heart catheterization and advanced PH therapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-barnes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-barnes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 44 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Murphy</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Interventional Pulmonology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in advanced bronchoscopic techniques for airway diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-murphy.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-murphy" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 45 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Levi Coleman</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Sleep Medicine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in complex sleep disorders and non-invasive ventilation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-levi-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=levi-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 46 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Aurora Reed</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Cystic Fibrosis</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on comprehensive care for adults with cystic fibrosis.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-aurora-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=aurora-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 47 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Maxwell Flores</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pleural Disease</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in management of complex pleural effusions and pneumothorax.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-maxwell-flores.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=maxwell-flores" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 48 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Washington</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Occupational Lung Disease</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in work-related respiratory conditions and disability evaluations.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-washington.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-washington" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 49 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Owen Sanders</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Pulmonary Diagnostics</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in advanced pulmonary function testing and cardiopulmonary exercise testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-owen-sanders.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=owen-sanders" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nova Price</h3>
+                                <p class="doctor-title">MD, Pulmonology</p>
+                                <span class="doctor-specialty">Critical Care Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in extracorporeal membrane oxygenation (ECMO) for respiratory failure.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nova-price.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nova-price" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Pulmonology Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-lungs"></i> Pulmonary Function Testing</a></li>
+                        <li><a href="#"><i class="fas fa-bed"></i> Sleep Studies</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Bronchoscopy</a></li>
+                        <li><a href="#"><i class="fas fa-x-ray"></i> Thoracic Imaging</a></li>
+                        <li><a href="#"><i class="fas fa-vial"></i> Arterial Blood Gas Analysis</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Thoracentesis</a></li>
+                        <li><a href="#"><i class="fas fa-pills"></i> Oxygen Therapy</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Pulmonary Rehabilitation</a></li>
+                        <li><a href="#"><i class="fas fa-user-md"></i> Smoking Cessation Program</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Respiratory Therapy</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Pleuroscopy</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> ECMO Services</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Respiratory Health Resources</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-book"></i> Understanding Lung Diseases</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> Nutrition for Lung Health</a></li>
+                        <li><a href="#"><i class="fas fa-dumbbell"></i> Breathing Exercises</a></li>
+                        <li><a href="#"><i class="fas fa-smoking-ban"></i> Quit Smoking Resources</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Managing Chronic Lung Conditions</a></li>
+                        <li><a href="#"><i class="fas fa-air-freshener"></i> Indoor Air Quality Guide</a></li>
+                        <li><a href="#"><i class="fas fa-running"></i> Exercise with Lung Disease</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple filter functionality would be added here in a real implementation
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+        });
+    </script>
+</body>
+</html>

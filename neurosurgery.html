@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurosurgery Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --neurosurgery: #ede9fe;
+            --neurosurgery-text: #5b21b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--neurosurgery);
+            color: var(--neurosurgery-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Neurosurgery Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="neurosurgery.html">Neurosurgery</a>
+                </div>
+                <p>World-class neurosurgical care for complex brain, spine and nervous system conditions using advanced techniques</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Neurosurgeons</h2>
+                        <p>Meet our team of board-certified neurosurgeons with expertise in both traditional and minimally invasive neurosurgical techniques.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Brain Tumor Surgery</option>
+                                <option>Spinal Surgery</option>
+                                <option>Cerebrovascular</option>
+                                <option>Pediatric Neurosurgery</option>
+                                <option>Functional Neurosurgery</option>
+                                <option>Skull Base Surgery</option>
+                                <option>Peripheral Nerve</option>
+                                <option>Trauma Neurosurgery</option>
+                                <option>Stereotactic Radiosurgery</option>
+                                <option>Neurocritical Care</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Neuroscience Center</option>
+                                <option>Spine Institute</option>
+                                <option>Brain Tumor Center</option>
+                                <option>Pediatric Neurosurgery Unit</option>
+                                <option>Neurotrauma Center</option>
+                                <option>Cerebrovascular Center</option>
+                                <option>Gamma Knife Center</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Carter</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Brain Tumor Surgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in complex brain tumor removal using advanced intraoperative imaging.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Bennett</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in minimally invasive spine surgery and spinal deformity correction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Thompson</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Cerebrovascular</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in aneurysm clipping and AVM surgery with intraoperative angiography.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Neurosurgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in congenital brain and spinal conditions in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Wilson</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Functional Neurosurgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in deep brain stimulation for movement disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Johnson</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Skull Base Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in endoscopic endonasal approaches to skull base tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Noah Adams</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Peripheral Nerve</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in nerve decompression and complex nerve reconstruction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-noah-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=noah-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Chen</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Trauma Neurosurgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in traumatic brain and spinal cord injuries.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Liam Rodriguez</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Stereotactic Radiosurgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in Gamma Knife and CyberKnife procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-liam-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=liam-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Williams</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurocritical Care</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in post-operative neurosurgical intensive care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Kim</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Oncology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in metastatic and primary spinal tumor surgery.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Brown</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Epilepsy Surgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in surgical treatment of refractory epilepsy.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Alexander Wright</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurovascular Surgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in bypass surgery for complex cerebrovascular disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-alexander-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=alexander-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria Scott</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Minimally Invasive Spine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in microdiscectomy and tubular retractor systems.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Reed</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Epilepsy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in surgical treatment of childhood epilepsy.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Hayes</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neuro-oncology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in surgical treatment of malignant brain tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-hayes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-hayes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Bennett</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Endoscopic Neurosurgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in endoscopic approaches to ventricular and pituitary tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Foster</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Deformity</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in complex scoliosis and kyphosis correction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Miles Patterson</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Peripheral Nerve</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in brachial plexus and peripheral nerve reconstruction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-miles-patterson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=miles-patterson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Eleanor Hughes</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Cerebrovascular</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in flow diversion and stent-assisted coiling for aneurysms.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-eleanor-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=eleanor-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 21 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Theodore Grant</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Trauma</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in acute spinal cord injury and fracture stabilization.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-theodore-grant.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=theodore-grant" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 22 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Vivian Carter</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pituitary Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in endoscopic transsphenoidal pituitary surgery.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-vivian-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=vivian-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 23 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Harrison Lee</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurorestoration</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in neural regeneration and stem cell therapies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-harrison-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=harrison-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 24 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lillian Moore</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Hydrocephalus</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in endoscopic third ventriculostomy and shunt procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lillian-moore.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lillian-moore" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 25 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Maxwell Stone</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Skull Base Oncology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in complex skull base tumor resection and reconstruction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-maxwell-stone.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=maxwell-stone" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 26 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathaniel Pierce</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Cord Stimulation</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in implantable devices for chronic pain management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathaniel-pierce.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathaniel-pierce" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 27 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Genevieve Rhodes</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Brain Tumors</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive approaches to childhood brain tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-genevieve-rhodes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=genevieve-rhodes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 28 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Dominic Shaw</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurotrauma</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in severe traumatic brain injury management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-dominic-shaw.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=dominic-shaw" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 29 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Rosalind Graham</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Cerebral Bypass</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in revascularization procedures for moyamoya disease.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-rosalind-graham.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=rosalind-graham" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Frederick Cole</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Oncology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in en bloc resection of spinal column tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-frederick-cole.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=frederick-cole" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 31 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Beatrice Wong</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neuroendovascular</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive stroke and aneurysm treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-beatrice-wong.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=beatrice-wong" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 32 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Vincent Park</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Functional Epilepsy</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in laser ablation for epilepsy foci.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-vincent-park.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=vincent-park" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 33 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Margaret Flynn</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Spine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in congenital spinal deformities in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-margaret-flynn.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=margaret-flynn" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 34 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Leonard Chu</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Skull Base</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in transnasal endoscopic skull base approaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-leonard-chu.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=leonard-chu" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 35 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sylvia Mendoza</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neuro-oncology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in awake craniotomies for eloquent area tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sylvia-mendoza.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sylvia-mendoza" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 36 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Wallace Price</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Peripheral Nerve</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in nerve transfers for brachial plexus injuries.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-wallace-price.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=wallace-price" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 37 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ingrid Volkova</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Cerebrovascular</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in bypass surgery for complex aneurysms.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ingrid-volkova.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ingrid-volkova" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 38 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Reginald Moss</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Deformity</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in adult degenerative scoliosis correction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-reginald-moss.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=reginald-moss" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 39 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Priya Desai</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurocritical Care</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in multimodality monitoring for severe TBI.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-priya-desai.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=priya-desai" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Terrance Wu</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Functional Neurosurgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in DBS for Parkinson's and essential tremor.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-terrance-wu.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=terrance-wu" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 41 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Helena Sokolov</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Neuro-oncology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in brainstem glioma treatment in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-helena-sokolov.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=helena-sokolov" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 42 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Franklin Grant</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Trauma</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in minimally invasive spinal fracture stabilization.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-franklin-grant.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=franklin-grant" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 43 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Naomi Zhang</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neurovascular</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in arteriovenous malformation microsurgery.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-naomi-zhang.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=naomi-zhang" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 44 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Quentin Rhodes</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Skull Base</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in petroclival meningioma resection.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-quentin-rhodes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=quentin-rhodes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 45 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Yvonne Mercer</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Functional</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in responsive neurostimulation for epilepsy.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-yvonne-mercer.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=yvonne-mercer" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 46 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Oscar Vincent</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Cord Injury</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in acute spinal cord injury interventions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-oscar-vincent.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=oscar-vincent" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 47 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Irene Kovac</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Neuro-oncology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in glioblastoma multiforme resection.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-irene-kovac.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=irene-kovac" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 48 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Desmond Flynn</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Pediatric Trauma</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in pediatric traumatic brain injury management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-desmond-flynn.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=desmond-flynn" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 49 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Laila Hassan</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Cerebrovascular</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in bypass for moyamoya disease.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-laila-hassan.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=laila-hassan" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Raymond Stone</h3>
+                                <p class="doctor-title">MD, Neurosurgery</p>
+                                <span class="doctor-specialty">Spinal Oncology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in en bloc spondylectomy for spinal tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-raymond-stone.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=raymond-stone" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Neurosurgery Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-brain"></i> Brain Tumor Surgery</a></li>
+                        <li><a href="#"><i class="fas fa-bone"></i> Spinal Surgery</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Cerebrovascular Surgery</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Pediatric Neurosurgery</a></li>
+                        <li><a href="#"><i class="fas fa-microchip"></i> Functional Neurosurgery</a></li>
+                        <li><a href="#"><i class="fas fa-skull"></i> Skull Base Surgery</a></li>
+                        <li><a href="#"><i class="fas fa-nerve"></i> Peripheral Nerve Surgery</a></li>
+                        <li><a href="#"><i class="fas fa-ambulance"></i> Trauma Neurosurgery</a></li>
+                        <li><a href="#"><i class="fas fa-radiation"></i> Stereotactic Radiosurgery</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Neurocritical Care</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Quick Links</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-calendar-check"></i> Request an Appointment</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Our Locations</a></li>
+                        <li><a href="#"><i class="fas fa-user-md"></i> Meet Our Team</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Patient Resources</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+                    </ul>
+                    
+                    <div style="background: var(--light-gray); padding: 20px; border-radius: 8px; margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px; color: var(--dark);">Emergency Neurosurgery</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--gray);">For urgent neurosurgical needs, please call our 24/7 emergency line:</p>
+                        <a href="tel:+18005551234" style="display: block; background: var(--primary); color: white; text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            <i class="fas fa-phone" style="margin-right: 8px;"></i> 1-800-555-1234
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple filter functionality demonstration
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // In a real implementation, this would filter the doctor cards
+                console.log('Filter by:', this.value);
+            });
+        });
+        
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            document.querySelectorAll('.filter-select').forEach(select => {
+                select.selectedIndex = 0;
+            });
+            // In a real implementation, this would reset all filters
+            console.log('Filters reset');
+        });
+    </script>
+</body>
+</html>

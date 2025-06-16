@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at HealthPlus | Join Our Medical Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ed;
+            --primary-light: #b5d5fd;
+            --primary-dark: #215bb6;
+            --secondary: #10b981;
+            --accent: #5c8bf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        .career-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Why Join Us Section */
+        .benefits-section {
+            background-color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Job Listings */
+        .job-listings {
+            margin-top: 60px;
+        }
+        
+        .job-filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        .job-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .job-location {
+            color: var(--gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .job-type {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .full-time {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .part-time {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+        
+        .contract {
+            background: #e0f2fe;
+            color: #075985;
+        }
+        
+        .job-department {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .job-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .job-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .job-posted {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(58, 134, 237, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Culture Section */
+        .culture-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0;
+            margin: 80px 0;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .culture-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .culture-content h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .culture-content p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .value-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Application Process */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 20%;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 15px;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .step {
+                width: calc(50% - 15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .career-header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .job-filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .step {
+                width: 100%;
+            }
+            
+            .job-actions {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="career-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Join Our Team</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="about.html">About Us</a>
+                    <span>/</span>
+                    <a href="careers.html">Careers</a>
+                </div>
+                <p>At HealthPlus, we're building the future of healthcare. Join our team of dedicated professionals committed to excellence in patient care.</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="section-title">
+                <h2>Why Work at HealthPlus?</h2>
+                <p>We offer competitive benefits, a supportive work environment, and opportunities for professional growth.</p>
+            </div>
+            
+            <div class="benefits-section">
+                <div class="container">
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Comprehensive Healthcare</h3>
+                            <p>Medical, dental, and vision coverage for you and your family with low deductibles and copays.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Continuing Education</h3>
+                            <p>Annual stipend for professional development and access to our learning management system.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3>Retirement Planning</h3>
+                            <p>401(k) with generous employer matching and financial planning resources.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3>Work-Life Balance</h3>
+                            <p>Generous PTO, flexible scheduling options, and paid parental leave.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>On-Site Amenities</h3>
+                            <p>Healthy meal options, fitness center, and relaxation spaces at our main campus.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Team Environment</h3>
+                            <p>Collaborative culture with regular team-building activities and events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="job-listings">
+                <div class="section-title">
+                    <h2>Current Openings</h2>
+                    <p>Browse our available positions and find your perfect fit at HealthPlus Medical Center.</p>
+                </div>
+                
+                <div class="job-filters">
+                    <div class="filter-group">
+                        <span class="filter-label">Filter by:</span>
+                        <select class="filter-select">
+                            <option>All Departments</option>
+                            <option>Physicians</option>
+                            <option>Nursing</option>
+                            <option>Allied Health</option>
+                            <option>Administration</option>
+                            <option>Research</option>
+                            <option>Support Staff</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <span class="filter-label">Job Type:</span>
+                        <select class="filter-select">
+                            <option>All Types</option>
+                            <option>Full-time</option>
+                            <option>Part-time</option>
+                            <option>Contract</option>
+                            <option>Per Diem</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <span class="filter-label">Location:</span>
+                        <select class="filter-select">
+                            <option>All Locations</option>
+                            <option>Main Hospital</option>
+                            <option>Downtown Clinic</option>
+                            <option>Westside Center</option>
+                            <option>Pediatric Facility</option>
+                            <option>Research Institute</option>
+                        </select>
+                    </div>
+                    
+                    <button class="reset-btn">Reset Filters</button>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Registered Nurse - Emergency Department</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Main Hospital</span>
+                                <span class="job-type full-time">Full-time</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Nursing</span>
+                    </div>
+                    <p class="job-description">Provide direct patient care in our Level 1 Trauma Center. Assess patient conditions, administer medications, and collaborate with physicians to implement care plans. Minimum 2 years ED experience required.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 3 days ago</span>
+                        <a href="apply.html?job=rn-ed" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Physical Therapist - Outpatient</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Westside Center</span>
+                                <span class="job-type part-time">Part-time</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Allied Health</span>
+                    </div>
+                    <p class="job-description">Provide rehabilitative services to patients with injuries or illnesses. Develop treatment plans, monitor progress, and document patient outcomes. New grads welcome to apply.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 1 week ago</span>
+                        <a href="apply.html?job=pt-outpatient" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Medical Receptionist</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Downtown Clinic</span>
+                                <span class="job-type full-time">Full-time</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Support Staff</span>
+                    </div>
+                    <p class="job-description">Greet patients, schedule appointments, verify insurance, and maintain patient records. Excellent customer service skills and basic medical terminology knowledge required.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 2 weeks ago</span>
+                        <a href="apply.html?job=receptionist" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Pediatrician</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pediatric Facility</span>
+                                <span class="job-type full-time">Full-time</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Physicians</span>
+                    </div>
+                    <p class="job-description">Board-certified pediatrician needed for busy practice. Provide comprehensive care to patients from birth through adolescence. Competitive salary and partnership track available.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 5 days ago</span>
+                        <a href="apply.html?job=pediatrician" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Clinical Research Coordinator</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Research Institute</span>
+                                <span class="job-type contract">Contract</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Research</span>
+                    </div>
+                    <p class="job-description">Coordinate clinical trials from start to finish. Ensure protocol compliance, collect data, and interface with investigators. Minimum 1 year research experience preferred.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 3 weeks ago</span>
+                        <a href="apply.html?job=research-coordinator" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">IT Support Specialist</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Main Hospital</span>
+                                <span class="job-type full-time">Full-time</span>
+                            </div>
+                        </div>
+                        <span class="job-department">Administration</span>
+                    </div>
+                    <p class="job-description">Provide technical support for clinical and administrative systems. Troubleshoot hardware/software issues and assist with system implementations. Healthcare IT experience a plus.</p>
+                    <div class="job-actions">
+                        <span class="job-posted">Posted 1 day ago</span>
+                        <a href="apply.html?job=it-support" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="culture-section">
+                <div class="culture-content">
+                    <h2>Our Culture</h2>
+                    <p>At HealthPlus, we foster an environment of collaboration, innovation, and compassion. Our team members are our greatest asset, and we're committed to creating a workplace where everyone can thrive.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3>Compassion</h3>
+                            <p>We treat patients and colleagues with empathy and kindness.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>We embrace new ideas and technologies to improve care.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Teamwork</h3>
+                            <p>We achieve more together through collaboration.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Excellence</h3>
+                            <p>We strive for the highest standards in all we do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Application Process</h2>
+                <p>Our straightforward hiring process ensures we find the right candidates efficiently.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Application</h3>
+                    <p>Complete our online application form and upload your resume.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Phone Screening</h3>
+                    <p>Brief conversation with our HR team to discuss your qualifications.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Interview</h3>
+                    <p>Meet with the hiring manager and potential team members.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Skills Assessment</h3>
+                    <p>Demonstrate your abilities through practical evaluation.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Offer & Onboarding</h3>
+                    <p>Receive your offer and begin our comprehensive orientation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

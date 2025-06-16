@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Groups | HealthPlus Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ed;
+            --primary-light: #b5d5fd;
+            --primary-dark: #215bb6;
+            --secondary: #10b981;
+            --accent: #5c8bf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--secondary), #0d9e6e);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Support Groups Grid */
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .group-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .group-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .group-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .group-content {
+            padding: 25px;
+        }
+        
+        .group-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .group-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .group-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .group-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .group-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tag {
+            background: var(--light-gray);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0d9e6e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        /* Upcoming Events */
+        .events-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .events-list {
+            margin-top: 20px;
+        }
+        
+        .event-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .event-item:last-child {
+            border-bottom: none;
+        }
+        
+        .event-date {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .event-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .event-month {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+        
+        .event-details {
+            flex: 1;
+        }
+        
+        .event-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .event-time {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .event-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--light-gray);
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            line-height: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Resources Section */
+        .resources-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .resources-list {
+            margin-top: 20px;
+        }
+        
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .resource-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .resource-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .groups-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .event-item {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                align-self: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .groups-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .group-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Support Groups</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="community.html">Community</a>
+                    <span>/</span>
+                    <a href="support-groups.html">Support Groups</a>
+                </div>
+                <p>Find understanding, share experiences, and connect with others facing similar health challenges.</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="section-title">
+                <h2>Find Your Community</h2>
+                <p>Join one of our specialized support groups to connect with others who understand your journey.</p>
+            </div>
+            
+            <div class="groups-grid">
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Diabetes Support Network</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 45 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Weekly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online & In-person</span>
+                        </div>
+                        <p class="group-description">A supportive community for individuals managing type 1 or type 2 diabetes. Share tips, challenges, and successes in a judgment-free environment.</p>
+                        <div class="group-tags">
+                            <span class="tag">Diabetes</span>
+                            <span class="tag">Nutrition</span>
+                            <span class="tag">Lifestyle</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+                
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Cancer Warriors</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 82 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Bi-weekly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                        <p class="group-description">For patients, survivors, and caregivers navigating cancer journeys. Emotional support and practical advice from those who understand.</p>
+                        <div class="group-tags">
+                            <span class="tag">Oncology</span>
+                            <span class="tag">Survivors</span>
+                            <span class="tag">Caregivers</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+                
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Mental Health Matters</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 120 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Weekly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                        <p class="group-description">A safe space for discussing anxiety, depression, and other mental health challenges. Moderated by licensed professionals.</p>
+                        <div class="group-tags">
+                            <span class="tag">Anxiety</span>
+                            <span class="tag">Depression</span>
+                            <span class="tag">Wellness</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+                
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Heart Health Community</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 36 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Monthly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> In-person</span>
+                        </div>
+                        <p class="group-description">For individuals managing cardiovascular conditions. Share experiences and learn about heart-healthy living.</p>
+                        <div class="group-tags">
+                            <span class="tag">Cardiology</span>
+                            <span class="tag">Hypertension</span>
+                            <span class="tag">Recovery</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+                
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Chronic Pain Support</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 58 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Weekly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                        <p class="group-description">For those living with chronic pain conditions. Share coping strategies and find emotional support from others who understand.</p>
+                        <div class="group-tags">
+                            <span class="tag">Pain Management</span>
+                            <span class="tag">Fibromyalgia</span>
+                            <span class="tag">Arthritis</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+                
+                <div class="group-card">
+                    <div class="group-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">New Parents Network</h3>
+                        <div class="group-meta">
+                            <span><i class="fas fa-users"></i> 95 members</span>
+                            <span><i class="fas fa-calendar-alt"></i> Bi-weekly meetings</span>
+                            <span><i class="fas fa-map-marker-alt"></i> In-person</span>
+                        </div>
+                        <p class="group-description">Connect with other new parents navigating the challenges and joys of parenthood. Share experiences and get expert advice.</p>
+                        <div class="group-tags">
+                            <span class="tag">Parenting</span>
+                            <span class="tag">Postpartum</span>
+                            <span class="tag">Childcare</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Join Group</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 80px;">
+                <h2>Upcoming Events</h2>
+                <p>Join our upcoming support group meetings and educational sessions.</p>
+            </div>
+            
+            <div class="events-section">
+                <div class="section-header">
+                    <h3>Featured Events</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">View All Events</button>
+                    </div>
+                </div>
+                
+                <div class="events-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">Jun</div>
+                        </div>
+                        <div class="event-details">
+                            <h4 class="event-title">Managing Diabetes During Summer</h4>
+                            <p class="event-time"><i class="far fa-clock"></i> 6:00 PM - 7:30 PM (EST)</p>
+                            <p class="event-description">Learn strategies for managing blood sugar during hot weather and summer activities. Q&A with diabetes educator.</p>
+                            <div class="event-actions">
+                                <button class="btn btn-primary">Register</button>
+                                <button class="btn btn-outline">Add to Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">18</div>
+                            <div class="event-month">Jun</div>
+                        </div>
+                        <div class="event-details">
+                            <h4 class="event-title">Cancer Survivors Celebration</h4>
+                            <p class="event-time"><i class="far fa-clock"></i> 2:00 PM - 4:00 PM (EST)</p>
+                            <p class="event-description">Annual gathering to celebrate survivorship with inspirational stories, resources, and connection.</p>
+                            <div class="event-actions">
+                                <button class="btn btn-primary">Register</button>
+                                <button class="btn btn-outline">Add to Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">22</div>
+                            <div class="event-month">Jun</div>
+                        </div>
+                        <div class="event-details">
+                            <h4 class="event-title">Mindfulness for Anxiety Relief</h4>
+                            <p class="event-time"><i class="far fa-clock"></i> 7:00 PM - 8:00 PM (EST)</p>
+                            <p class="event-description">Guided mindfulness session with licensed therapist to help manage anxiety symptoms.</p>
+                            <div class="event-actions">
+                                <button class="btn btn-primary">Register</button>
+                                <button class="btn btn-outline">Add to Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 80px;">
+                <h2>Member Testimonials</h2>
+                <p>Hear from others who have found support and connection through our groups.</p>
+            </div>
+            
+            <div class="testimonials-section">
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">This group has been a lifeline for me. After my diagnosis, I felt so alone, but now I have friends who truly understand what I'm going through.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria G.">
+                            </div>
+                            <div class="author-info">
+                                <h4>Maria G.</h4>
+                                <p>Diabetes Support Member</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">The cancer support group helped me through my darkest days. The shared experiences and practical advice made all the difference in my journey.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James T.">
+                            </div>
+                            <div class="author-info">
+                                <h4>James T.</h4>
+                                <p>Cancer Warriors Member</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">As a new parent, I was overwhelmed. This group gave me confidence and friendships that have lasted beyond those first challenging months.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K.">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah K.</h4>
+                                <p>New Parents Network</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 80px;">
+                <h2>Helpful Resources</h2>
+                <p>Additional materials to support your health journey.</p>
+            </div>
+            
+            <div class="resources-section">
+                <div class="resources-list">
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>Guide to Starting a Support Group</h4>
+                            <p>PDF | 2.4 MB</p>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>Facilitator Training Manual</h4>
+                            <p>PDF | 5.1 MB</p>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>Support Group Best Practices</h4>
+                            <p>Video | 18 min</p>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn-outline">Watch</button>
+                            <button class="btn btn-primary">Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-info">
+                            <h4>Community Building Activities</h4>
+                            <p>PDF | 1.2 MB</p>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

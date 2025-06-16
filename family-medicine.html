@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Medicine Doctors | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Family Medicine Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="family-medicine.html">Family Medicine</a>
+                </div>
+                <p>Comprehensive healthcare for individuals and families across all ages</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Family Medicine Physicians</h2>
+                        <p>Meet our team of board-certified family medicine specialists dedicated to providing personalized, comprehensive care for your entire family.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Pediatric Care</option>
+                                <option>Women's Health</option>
+                                <option>Geriatric Care</option>
+                                <option>Sports Medicine</option>
+                                <option>Chronic Disease</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Main Campus</option>
+                                <option>North Clinic</option>
+                                <option>South Clinic</option>
+                                <option>West Clinic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sarah Johnson</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Primary Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Board-certified family physician with 15 years of experience focusing on preventive care and chronic disease management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sarah-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sarah-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michael Chen</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Pediatric & Adult Care</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in family wellness, sports medicine, and holistic approaches to family healthcare.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michael-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michael-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Alicia Rodriguez</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Women's Health</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focused on comprehensive care for women and children with special interest in preventive medicine.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-alicia-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=alicia-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Robert Williams</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Geriatric Care</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in family medicine with focus on senior health and chronic condition management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-robert-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=robert-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Priya Patel</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Preventive Medicine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on preventive care, nutrition, and lifestyle medicine for the whole family.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-priya-patel.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=priya-patel" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. James Wilson</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Sports Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in family medicine with additional training in sports medicine and musculoskeletal care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-james-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=james-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Zhang</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Pediatric Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in pediatric care with a gentle approach to children's health and development.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-zhang.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-zhang" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Martinez</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Women's Health</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on comprehensive women's health from adolescence through menopause.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. David Kim</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Chronic Disease</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in managing diabetes, hypertension, and other chronic conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-david-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=david-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Taylor</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Geriatric Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in care for older adults with complex medical needs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-taylor" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Lee</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Preventive Care</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on preventive screenings and health maintenance for all ages.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Brown</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Sports Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in sports injuries and musculoskeletal conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Garcia</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Men's Health</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in comprehensive men's health and wellness.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-garcia.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-garcia" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Clark</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Adolescent Medicine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in care for teenagers and young adults.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-clark.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-clark" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Daniel White</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Weight Management</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Helps patients achieve healthy weight through medical and lifestyle approaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-daniel-white.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=daniel-white" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Adams</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Travel Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in travel vaccinations and health advice for international travelers.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Christopher Lee</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">LGBTQ+ Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for LGBTQ+ individuals and families.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-christopher-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=christopher-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Hernandez</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Mental Health</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Integrates mental health care with primary care for comprehensive treatment.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-hernandez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-hernandez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Martin</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Addiction Medicine</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in substance use disorders and recovery support.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-martin.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-martin" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Wilson</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Nutrition</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on nutritional counseling and dietary approaches to health.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 21 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Henry Scott</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Sleep Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in sleep disorders and improving sleep health.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-henry-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=henry-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 22 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Amelia Young</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Pain Management</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides comprehensive approaches to chronic pain management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-amelia-young.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=amelia-young" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 23 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jackson Baker</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Cardiovascular Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on heart health and cardiovascular disease prevention.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jackson-baker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jackson-baker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 24 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Evelyn King</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Diabetes Care</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in diabetes management and education.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-evelyn-king.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=evelyn-king" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 25 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Samuel Green</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Occupational Health</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on workplace health and injury prevention.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-samuel-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=samuel-green" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 26 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Harper Wright</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Allergy & Immunology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in allergy testing and treatment.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-harper-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=harper-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 27 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Matthew Hall</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Dermatology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides basic dermatological care within family medicine.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-matthew-hall.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=matthew-hall" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 28 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lily Allen</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Pregnancy Care</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides prenatal and postpartum care for expectant mothers.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lily-allen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lily-allen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 29 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Carter Nelson</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Vaccinations</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in immunization schedules and vaccine education.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-carter-nelson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=carter-nelson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Zoe Carter</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Behavioral Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Integrates behavioral health services with primary care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-zoe-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=zoe-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 31 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ryan Mitchell</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Minor Procedures</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Performs minor surgical procedures in office settings.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ryan-mitchell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ryan-mitchell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 32 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nora Parker</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Adolescent Health</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in health issues specific to teenagers.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nora-parker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nora-parker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 33 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Levi Cooper</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Hypertension</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on blood pressure management and cardiovascular risk reduction.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-levi-cooper.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=levi-cooper" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 34 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Stella Reed</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Asthma & COPD</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in respiratory conditions management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-stella-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=stella-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 35 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Theodore Morgan</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Thyroid Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in thyroid function evaluation and management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-theodore-morgan.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=theodore-morgan" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 36 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Bailey</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Gastrointestinal Health</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on digestive health and common GI disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-bailey.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-bailey" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 37 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Rivera</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Infectious Disease</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in common infectious diseases and antibiotic stewardship.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-rivera.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-rivera" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 38 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Bennett</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Rural Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on healthcare challenges in rural communities.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 39 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Miles Coleman</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Headache Management</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and treatment of chronic headaches.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-miles-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=miles-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ruby Howard</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Palliative Care</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides supportive care for patients with serious illnesses.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ruby-howard.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ruby-howard" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 41 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Owen Cox</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Arthritis Care</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in joint health and arthritis management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-owen-cox.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=owen-cox" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 42 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Aurora Diaz</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Adolescent Medicine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in healthcare for teenagers and young adults.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-aurora-diaz.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=aurora-diaz" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 43 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jasper Hughes</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Travel Health</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides pre-travel consultations and vaccinations.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jasper-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jasper-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 44 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Luna Price</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Mental Health</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides integrated mental health services in primary care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-luna-price.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=luna-price" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 45 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Felix Sanders</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Minor Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Performs minor surgical procedures in the office setting.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-felix-sanders.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=felix-sanders" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 46 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ivy Barnes</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Newborn Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in care for newborns and infants.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ivy-barnes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ivy-barnes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 47 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Asher Ross</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Hypertension</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Focuses on blood pressure management and cardiovascular health.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-asher-ross.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=asher-ross" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 48 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nova Henderson</h3>
+                                <p class="doctor-title">DO, Family Medicine</p>
+                                <span class="doctor-specialty">Diabetes Education</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides comprehensive diabetes education and management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nova-henderson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nova-henderson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 49 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Silas Coleman</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Preventive Care</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Focuses on preventive screenings and health maintenance.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-silas-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=silas-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Willow Foster</h3>
+                                <p class="doctor-title">MD, Family Medicine</p>
+                                <span class="doctor-specialty">Women's Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in comprehensive women's healthcare.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-willow-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=willow-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">Next</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Family Medicine Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Annual Physical Exams</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Pediatric Care</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Women's Health</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Men's Health</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Geriatric Care</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Chronic Disease Management</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Preventive Screenings</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Immunizations</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Minor Procedures</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Shift Timings</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-sun"></i> Morning: 8AM - 12PM</a></li>
+                        <li><a href="#"><i class="fas fa-cloud-sun"></i> Afternoon: 12PM - 4PM</a></li>
+                        <li><a href="#"><i class="fas fa-moon"></i> Evening: 4PM - 8PM</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Night: 8PM - 8AM</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Quick Links</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="patient-forms.html"><i class="fas fa-file-alt"></i> Patient Forms</a></li>
+                        <li><a href="insurance.html"><i class="fas fa-heartbeat"></i> Insurance Information</a></li>
+                        <li><a href="preventive-care.html"><i class="fas fa-shield-virus"></i> Preventive Care Guide</a></li>
+                        <li><a href="telemedicine.html"><i class="fas fa-video"></i> Telemedicine Options</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">HealthPlus</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 20px; line-height: 1.6;">Providing exceptional healthcare services with compassion and innovation.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Contact Us</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Medical Drive, Health City</p>
+                    <p style="color: #cbd5e1; margin-bottom: 15px;"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> (800) 555-1234</p>
+                    <p style="color: #cbd5e1;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@healthplus.com</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="find-doctor.html" style="color: #cbd5e1; text-decoration: none;">Find a Doctor</a></li>
+                        <li style="margin-bottom: 10px;"><a href="services.html" style="color: #cbd5e1; text-decoration: none;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="patient-portal.html" style="color: #cbd5e1; text-decoration: none;">Patient Portal</a></li>
+                        <li style="margin-bottom: 10px;"><a href="careers.html" style="color: #cbd5e1; text-decoration: none;">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid #334155; color: #94a3b8;">
+                <p>&copy; <span id="year"></span> HealthPlus Medical Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Simple filter functionality (would be enhanced with JavaScript framework in production)
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // In a real application, this would filter the doctor cards
+                alert('Filter functionality would be implemented with JavaScript in a production environment');
+            });
+        });
+        
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            document.querySelectorAll('.filter-select').forEach(select => {
+                select.selectedIndex = 0;
+            });
+        });
+    </script>
+</body>
+</html>

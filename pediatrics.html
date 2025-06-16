@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-light: #38bdf8;
+            --primary-dark: #0284c7;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --pediatric-blue: #bae6fd;
+            --pediatric-pink: #fbcfe8;
+            --pediatric-green: #bbf7d0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--pediatric-blue);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .ped-subspecialty {
+            display: inline-block;
+            background: var(--pediatric-pink);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Pediatric Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="pediatrics.html">Pediatrics</a>
+                </div>
+                <p>Comprehensive healthcare for infants, children, and adolescents from birth through age 21</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Pediatric Specialists</h2>
+                        <p>Meet our team of board-certified pediatricians and pediatric specialists dedicated to children's health and well-being.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>General Pediatrics</option>
+                                <option>Pediatric Cardiology</option>
+                                <option>Pediatric Neurology</option>
+                                <option>Pediatric Oncology</option>
+                                <option>Neonatology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Age Group:</span>
+                            <select class="filter-select">
+                                <option>All Ages</option>
+                                <option>Newborn (0-1 month)</option>
+                                <option>Infant (1-12 months)</option>
+                                <option>Toddler (1-3 years)</option>
+                                <option>Preschool (3-5 years)</option>
+                                <option>School Age (5-12 years)</option>
+                                <option>Adolescent (12-21 years)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Children's Hospital</option>
+                                <option>North Pediatric Clinic</option>
+                                <option>South Pediatric Clinic</option>
+                                <option>West Pediatric Clinic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1551601651-bc60f254d532?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Johnson</h3>
+                                <p class="doctor-title">MD, Pediatrics</p>
+                                <span class="doctor-specialty">General Pediatrics</span>
+                                <span class="ped-subspecialty">Newborn Care</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Board-certified pediatrician with 15 years of experience in comprehensive child healthcare from birth through adolescence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michael Chen</h3>
+                                <p class="doctor-title">MD, Pediatric Cardiology</p>
+                                <span class="doctor-specialty">Pediatric Cardiology</span>
+                                <span class="ped-subspecialty">Congenital Heart Defects</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in diagnosis and treatment of heart conditions in children, from newborns to young adults.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michael-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michael-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sarah Williams</h3>
+                                <p class="doctor-title">MD, Pediatric Neurology</p>
+                                <span class="doctor-specialty">Pediatric Neurology</span>
+                                <span class="ped-subspecialty">Epilepsy Specialist</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in treating neurological disorders in children including epilepsy, migraines, and developmental delays.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sarah-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sarah-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. David Kim</h3>
+                                <p class="doctor-title">MD, Pediatric Oncology</p>
+                                <span class="doctor-specialty">Pediatric Oncology</span>
+                                <span class="ped-subspecialty">Leukemia Specialist</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in the treatment of childhood cancers with a focus on leukemia and lymphoma.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-david-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=david-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Martinez</h3>
+                                <p class="doctor-title">MD, Neonatology</p>
+                                <span class="doctor-specialty">Neonatology</span>
+                                <span class="ped-subspecialty">NICU Specialist</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides specialized care for premature and critically ill newborns in the NICU.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Taylor</h3>
+                                <p class="doctor-title">MD, Pediatric Endocrinology</p>
+                                <span class="doctor-specialty">Pediatric Endocrinology</span>
+                                <span class="ped-subspecialty">Diabetes Specialist</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in growth disorders, diabetes, and hormonal conditions in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-taylor" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Lee</h3>
+                                <p class="doctor-title">MD, Pediatric Gastroenterology</p>
+                                <span class="doctor-specialty">Pediatric Gastroenterology</span>
+                                <span class="ped-subspecialty">IBD Specialist</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in digestive disorders in children including Crohn's disease and celiac disease.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Brown</h3>
+                                <p class="doctor-title">MD, Pediatric Pulmonology</p>
+                                <span class="doctor-specialty">Pediatric Pulmonology</span>
+                                <span class="ped-subspecialty">Asthma Specialist</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in respiratory conditions including asthma, cystic fibrosis, and sleep apnea.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Garcia</h3>
+                                <p class="doctor-title">MD, Pediatric Nephrology</p>
+                                <span class="doctor-specialty">Pediatric Nephrology</span>
+                                <span class="ped-subspecialty">Kidney Transplant</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in kidney diseases and kidney transplantation in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-garcia.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-garcia" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Clark</h3>
+                                <p class="doctor-title">MD, Pediatric Allergy & Immunology</p>
+                                <span class="doctor-specialty">Pediatric Allergy</span>
+                                <span class="ped-subspecialty">Food Allergy</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in food allergies, asthma, and immune system disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-clark.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-clark" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11-20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1551601651-bc60f254d532?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Daniel White</h3>
+                                <p class="doctor-title">MD, Pediatric Hematology</p>
+                                <span class="doctor-specialty">Pediatric Hematology</span>
+                                <span class="ped-subspecialty">Sickle Cell Disease</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in blood disorders including sickle cell disease and hemophilia.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-daniel-white.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=daniel-white" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Adams</h3>
+                                <p class="doctor-title">MD, Pediatric Rheumatology</p>
+                                <span class="doctor-specialty">Pediatric Rheumatology</span>
+                                <span class="ped-subspecialty">Juvenile Arthritis</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in autoimmune and inflammatory conditions in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Christopher Lee</h3>
+                                <p class="doctor-title">MD, Pediatric Infectious Disease</p>
+                                <span class="doctor-specialty">Pediatric Infectious Disease</span>
+                                <span class="ped-subspecialty">Immunocompromised</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in complex infections and travel-related illnesses in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-christopher-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=christopher-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Hernandez</h3>
+                                <p class="doctor-title">MD, Pediatric Surgery</p>
+                                <span class="doctor-specialty">Pediatric Surgery</span>
+                                <span class="ped-subspecialty">Minimally Invasive</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in surgical procedures for children using minimally invasive techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-hernandez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-hernandez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Martin</h3>
+                                <p class="doctor-title">MD, Pediatric Critical Care</p>
+                                <span class="doctor-specialty">Pediatric Critical Care</span>
+                                <span class="ped-subspecialty">PICU</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides intensive care for critically ill infants and children in the PICU.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-martin.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-martin" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Wilson</h3>
+                                <p class="doctor-title">MD, Pediatric Emergency Medicine</p>
+                                <span class="doctor-specialty">Pediatric Emergency</span>
+                                <span class="ped-subspecialty">Trauma</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in emergency care for acutely ill or injured children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Henry Thompson</h3>
+                                <p class="doctor-title">MD, Adolescent Medicine</p>
+                                <span class="doctor-specialty">Adolescent Medicine</span>
+                                <span class="ped-subspecialty">Teen Health</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in the unique healthcare needs of teenagers and young adults.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-henry-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=henry-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Amelia Rodriguez</h3>
+                                <p class="doctor-title">MD, Developmental Pediatrics</p>
+                                <span class="doctor-specialty">Developmental Pediatrics</span>
+                                <span class="ped-subspecialty">Autism Spectrum</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in developmental and behavioral issues including autism and ADHD.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-amelia-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=amelia-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Anderson</h3>
+                                <p class="doctor-title">MD, Pediatric Rehabilitation</p>
+                                <span class="doctor-specialty">Pediatric Rehabilitation</span>
+                                <span class="ped-subspecialty">Cerebral Palsy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in physical medicine and rehabilitation for children with disabilities.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-anderson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-anderson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctors 21-30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Harper Scott</h3>
+                                <p class="doctor-title">MD, Pediatric Ophthalmology</p>
+                                <span class="doctor-specialty">Pediatric Ophthalmology</span>
+                                <span class="ped-subspecialty">Strabismus</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in eye disorders and vision problems in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-harper-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=harper-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mason Young</h3>
+                                <p class="doctor-title">MD, Pediatric ENT</p>
+                                <span class="doctor-specialty">Pediatric Otolaryngology</span>
+                                <span class="ped-subspecialty">Hearing Loss</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in ear, nose and throat disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mason-young.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mason-young" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Evelyn King</h3>
+                                <p class="doctor-title">MD, Pediatric Dermatology</p>
+                                <span class="doctor-specialty">Pediatric Dermatology</span>
+                                <span class="ped-subspecialty">Eczema</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in skin conditions affecting infants, children and adolescents.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-evelyn-king.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=evelyn-king" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jackson Wright</h3>
+                                <p class="doctor-title">MD, Pediatric Urology</p>
+                                <span class="doctor-specialty">Pediatric Urology</span>
+                                <span class="ped-subspecialty">Hypospadias</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in urinary tract and genital problems in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jackson-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jackson-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lily Baker</h3>
+                                <p class="doctor-title">MD, Pediatric Genetics</p>
+                                <span class="doctor-specialty">Pediatric Genetics</span>
+                                <span class="ped-subspecialty">Metabolic Disorders</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in genetic disorders and birth defects in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lily-baker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lily-baker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Logan Hill</h3>
+                                <p class="doctor-title">MD, Pediatric Radiology</p>
+                                <span class="doctor-specialty">Pediatric Radiology</span>
+                                <span class="ped-subspecialty">Ultrasound</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in imaging and diagnosis of childhood conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-logan-hill.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=logan-hill" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Zoe Green</h3>
+                                <p class="doctor-title">MD, Pediatric Anesthesiology</p>
+                                <span class="doctor-specialty">Pediatric Anesthesiology</span>
+                                <span class="ped-subspecialty">Pain Management</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in anesthesia care for infants and children undergoing surgery.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-zoe-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=zoe-green" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Caleb Carter</h3>
+                                <p class="doctor-title">MD, Pediatric Orthopedics</p>
+                                <span class="doctor-specialty">Pediatric Orthopedics</span>
+                                <span class="ped-subspecialty">Scoliosis</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in bone and joint disorders in growing children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-caleb-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=caleb-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria Reed</h3>
+                                <p class="doctor-title">MD, Pediatric Psychiatry</p>
+                                <span class="doctor-specialty">Pediatric Psychiatry</span>
+                                <span class="ped-subspecialty">Mood Disorders</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in mental health conditions affecting children and teens.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctors 31-40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Bailey</h3>
+                                <p class="doctor-title">MD, Pediatric Dentistry</p>
+                                <span class="doctor-specialty">Pediatric Dentistry</span>
+                                <span class="ped-subspecialty">Special Needs</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in dental care for children and adolescents.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-bailey.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-bailey" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Stella Nelson</h3>
+                                <p class="doctor-title">MD, Pediatric Physical Medicine</p>
+                                <span class="doctor-specialty">Pediatric PM&R</span>
+                                <span class="ped-subspecialty">Spinal Cord Injury</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in physical medicine and rehabilitation for children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-stella-nelson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=stella-nelson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Aaron Rivera</h3>
+                                <p class="doctor-title">MD, Pediatric Sports Medicine</p>
+                                <span class="doctor-specialty">Pediatric Sports Medicine</span>
+                                <span class="ped-subspecialty">Concussion</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in sports-related injuries and conditions in young athletes.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-aaron-rivera.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=aaron-rivera" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nora Coleman</h3>
+                                <p class="doctor-title">MD, Pediatric Palliative Care</p>
+                                <span class="doctor-specialty">Pediatric Palliative Care</span>
+                                <span class="ped-subspecialty">Pain Management</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in improving quality of life for seriously ill children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nora-coleman.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nora-coleman" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ezra Howard</h3>
+                                <p class="doctor-title">MD, Pediatric Sleep Medicine</p>
+                                <span class="doctor-specialty">Pediatric Sleep Medicine</span>
+                                <span class="ped-subspecialty">Sleep Disorders</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in sleep disorders and disturbances in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ezra-howard.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ezra-howard" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Ward</h3>
+                                <p class="doctor-title">MD, Pediatric Allergy</p>
+                                <span class="doctor-specialty">Pediatric Allergy</span>
+                                <span class="ped-subspecialty">Food Challenges</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in food allergies and immune system disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-ward.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-ward" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Gabriel Cox</h3>
+                                <p class="doctor-title">MD, Pediatric Nephrology</p>
+                                <span class="doctor-specialty">Pediatric Nephrology</span>
+                                <span class="ped-subspecialty">Dialysis</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in kidney diseases and transplantation in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-gabriel-cox.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=gabriel-cox" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Brooks</h3>
+                                <p class="doctor-title">MD, Pediatric Endocrinology</p>
+                                <span class="doctor-specialty">Pediatric Endocrinology</span>
+                                <span class="ped-subspecialty">Growth Disorders</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in growth and hormonal disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-brooks.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-brooks" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctors 41-50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Theodore Bennett</h3>
+                                <p class="doctor-title">MD, Pediatric Gastroenterology</p>
+                                <span class="doctor-specialty">Pediatric Gastroenterology</span>
+                                <span class="ped-subspecialty">Feeding Disorders</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in digestive disorders and feeding problems in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-theodore-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=theodore-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Gray</h3>
+                                <p class="doctor-title">MD, Pediatric Hematology/Oncology</p>
+                                <span class="doctor-specialty">Pediatric Hem/Onc</span>
+                                <span class="ped-subspecialty">Bone Marrow Transplant</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in blood disorders and cancers in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-gray.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-gray" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sebastian Hughes</h3>
+                                <p class="doctor-title">MD, Pediatric Infectious Disease</p>
+                                <span class="doctor-specialty">Pediatric ID</span>
+                                <span class="ped-subspecialty">Immunocompromised Host</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in complex infections in immunocompromised children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sebastian-hughes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sebastian-hughes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Eleanor Powell</h3>
+                                <p class="doctor-title">MD, Pediatric Rheumatology</p>
+                                <span class="doctor-specialty">Pediatric Rheumatology</span>
+                                <span class="ped-subspecialty">Lupus</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in autoimmune and inflammatory conditions in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-eleanor-powell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=eleanor-powell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Dominic Foster</h3>
+                                <p class="doctor-title">MD, Pediatric Cardiology</p>
+                                <span class="doctor-specialty">Pediatric Cardiology</span>
+                                <span class="ped-subspecialty">Echocardiography</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in heart conditions and cardiac imaging in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-dominic-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=dominic-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Naomi Butler</h3>
+                                <p class="doctor-title">MD, Pediatric Neurology</p>
+                                <span class="doctor-specialty">Pediatric Neurology</span>
+                                <span class="ped-subspecialty">Neuromuscular</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in neuromuscular disorders in children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-naomi-butler.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=naomi-butler" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Maxwell Simmons</h3>
+                                <p class="doctor-title">MD, Pediatric Surgery</p>
+                                <span class="doctor-specialty">Pediatric Surgery</span>
+                                <span class="ped-subspecialty">Minimally Invasive</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in surgical procedures for children using advanced techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-maxwell-simmons.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=maxwell-simmons" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Clara Russell</h3>
+                                <p class="doctor-title">MD, Pediatric Critical Care</p>
+                                <span class="doctor-specialty">Pediatric Critical Care</span>
+                                <span class="ped-subspecialty">ECMO</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in intensive care for critically ill infants and children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-clara-russell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=clara-russell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Owen Bryant</h3>
+                                <p class="doctor-title">MD, Neonatology</p>
+                                <span class="doctor-specialty">Neonatology</span>
+                                <span class="ped-subspecialty">Prematurity</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in care of premature and critically ill newborns.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-owen-bryant.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=owen-bryant" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ruby Griffin</h3>
+                                <p class="doctor-title">MD, Pediatric Emergency Medicine</p>
+                                <span class="doctor-specialty">Pediatric Emergency</span>
+                                <span class="ped-subspecialty">Trauma</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in emergency care for acutely ill or injured children.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ruby-griffin.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ruby-griffin" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Pediatric Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-baby"></i> Well-Baby Visits</a></li>
+                        <li><a href="#"><i class="fas fa-syringe"></i> Vaccinations</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Developmental Screening</a></li>
+                        <li><a href="#"><i class="fas fa-stethoscope"></i> Sick Visits</a></li>
+                        <li><a href="#"><i class="fas fa-weight"></i> Nutrition Counseling</a></li>
+                        <li><a href="#"><i class="fas fa-brain"></i> Behavioral Health</a></li>
+                        <li><a href="#"><i class="fas fa-allergies"></i> Allergy Testing</a></li>
+                        <li><a href="#"><i class="fas fa-x-ray"></i> Diagnostic Services</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Age-Specific Care</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-baby-carriage"></i> Newborn Care (0-1mo)</a></li>
+                        <li><a href="#"><i class="fas fa-baby"></i> Infant Care (1-12mo)</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Toddler Care (1-3yrs)</a></li>
+                        <li><a href="#"><i class="fas fa-school"></i> Preschool (3-5yrs)</a></li>
+                        <li><a href="#"><i class="fas fa-user-graduate"></i> School Age (5-12yrs)</a></li>
+                        <li><a href="#"><i class="fas fa-user-astronaut"></i> Adolescent (12-21yrs)</a></li>
+                    </ul>
+                    
+                    <div style="background: var(--pediatric-blue); padding: 20px; border-radius: 8px; margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">New Patient?</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">We're accepting new patients! Schedule your child's first visit today.</p>
+                                            <a href="new-patient.html" class="btn btn-primary" style="width: 100%;">Register New Patient</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px; font-size: 1.2rem;">HealthPlus</h4>
+                    <p style="color: var(--light-gray); font-size: 0.9rem; line-height: 1.6;">Compassionate care for your family's health and wellness needs.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px; font-size: 1.2rem;">Quick Links</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--light-gray); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease;">Find a Doctor</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--light-gray); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--light-gray); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease;">Patient Portal</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--light-gray); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease;">Locations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px; font-size: 1.2rem;">Contact Us</h4>
+                    <address style="color: var(--light-gray); font-size: 0.9rem; font-style: normal; line-height: 1.6;">
+                        123 Medical Center Drive<br>
+                        Boston, MA 02115<br>
+                        Phone: (555) 123-4567<br>
+                        Email: info@healthplus.com
+                    </address>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px; font-size: 1.2rem;">Follow Us</h4>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--gray); padding-top: 20px; text-align: center; color: var(--light-gray); font-size: 0.8rem;">
+                <p>&copy; 2023 HealthPlus Medical Center. All rights reserved. | <a href="#" style="color: var(--light-gray); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--light-gray); text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterSelects = document.querySelectorAll('.filter-select');
+            const resetBtn = document.querySelector('.reset-btn');
+            
+            // Filter functionality would be implemented here
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    // In a real implementation, this would filter the doctor cards
+                    console.log('Filter by:', this.value);
+                });
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                filterSelects.forEach(select => {
+                    select.selectedIndex = 0;
+                });
+                // In a real implementation, this would reset all filters
+                console.log('Filters reset');
+            });
+            
+            // Pagination functionality
+            const paginationLinks = document.querySelectorAll('.pagination a');
+            paginationLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    paginationLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    // In a real implementation, this would load the selected page
+                    console.log('Go to page:', this.textContent.trim());
+                });
+            });
+        });
+    </script>
+</body>
+</html>

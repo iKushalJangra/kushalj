@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pain Management Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ed;
+            --primary-light: #b5d5fd;
+            --primary-dark: #215bb6;
+            --secondary: #10b981;
+            --accent: #5c8bf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --pain-mgmt: #e0f4ff;
+            --pain-text: #0369a1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--pain-mgmt);
+            color: var(--pain-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: #fce7f3;
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: #e0f2fe;
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(58, 134, 237, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Pain Management Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="pain-management.html">Pain Management</a>
+                </div>
+                <p>Comprehensive pain relief solutions including interventional procedures, medication management, and multidisciplinary approaches to chronic pain</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Pain Management Team</h2>
+                        <p>Meet our board-certified pain specialists who provide personalized treatment plans for acute and chronic pain conditions.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Interventional Pain</option>
+                                <option>Chronic Pain</option>
+                                <option>Sports Medicine</option>
+                                <option>Spine Specialists</option>
+                                <option>Headache Medicine</option>
+                                <option>Cancer Pain</option>
+                                <option>Pediatric Pain</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Treatment Type:</span>
+                            <select class="filter-select">
+                                <option>All Treatments</option>
+                                <option>Injections</option>
+                                <option>Nerve Blocks</option>
+                                <option>Physical Therapy</option>
+                                <option>Medication Management</option>
+                                <option>Radiofrequency Ablation</option>
+                                <option>Spinal Cord Stimulation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Availability:</span>
+                            <select class="filter-select">
+                                <option>All Times</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Weekends</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michael Harrison</h3>
+                                <p class="doctor-title">MD, Pain Medicine</p>
+                                <span class="doctor-specialty">Interventional Pain</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive procedures for chronic back and neck pain.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michael-harrison.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michael-harrison" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sarah Johnson</h3>
+                                <p class="doctor-title">MD, Anesthesiology</p>
+                                <span class="doctor-specialty">Chronic Pain</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in complex regional pain syndrome and neuropathic pain management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sarah-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sarah-johnson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Robert Chen</h3>
+                                <p class="doctor-title">MD, Physical Medicine</p>
+                                <span class="doctor-specialty">Spine Specialist</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in non-surgical spine treatments and rehabilitation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-robert-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=robert-chen" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Wong</h3>
+                                <p class="doctor-title">DO, Pain Medicine</p>
+                                <span class="doctor-specialty">Headache Medicine</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in migraine and cluster headache treatments including nerve blocks.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-wong.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-wong" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. David Miller</h3>
+                                <p class="doctor-title">MD, Anesthesiology</p>
+                                <span class="doctor-specialty">Cancer Pain</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in palliative care and advanced pain control for cancer patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-david-miller.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=david-miller" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Rodriguez</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">Neuropathic Pain</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in treating diabetic neuropathy and post-herpetic neuralgia.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-rodriguez" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Park</h3>
+                                <p class="doctor-title">MD, Sports Medicine</p>
+                                <span class="doctor-specialty">Sports Injuries</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in athletic injuries and regenerative medicine treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-park.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-park" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Rachel Kim</h3>
+                                <p class="doctor-title">MD, Physical Medicine</p>
+                                <span class="doctor-specialty">Joint Pain</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in osteoarthritis treatments and joint injections.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-rachel-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=rachel-kim" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Thomas Wilson</h3>
+                                <p class="doctor-title">MD, Anesthesiology</p>
+                                <span class="doctor-specialty">Spinal Cord Stimulation</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in advanced neuromodulation for chronic pain.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-thomas-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=thomas-wilson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jennifer Adams</h3>
+                                <p class="doctor-title">MD, Rheumatology</p>
+                                <span class="doctor-specialty">Arthritis Pain</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in autoimmune disorders and inflammatory arthritis.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jennifer-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jennifer-adams" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Kevin Patel</h3>
+                                <p class="doctor-title">MD, Interventional Pain</p>
+                                <span class="doctor-specialty">Radiofrequency Ablation</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive procedures for facet joint pain.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-kevin-patel.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=kevin-patel" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Lee</h3>
+                                <p class="doctor-title">MD, Physical Medicine</p>
+                                <span class="doctor-specialty">Pelvic Pain</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in chronic pelvic pain syndromes and myofascial release.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-lee" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Daniel Brown</h3>
+                                <p class="doctor-title">MD, Anesthesiology</p>
+                                <span class="doctor-specialty">Epidural Injections</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in fluoroscopic-guided spinal injections.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-daniel-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=daniel-brown" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Christopher Green</h3>
+                                <p class="doctor-title">MD, Neurology</p>
+                                <span class="doctor-specialty">CRPS Specialist</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in Complex Regional Pain Syndrome treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-christopher-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=christopher-green" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Amanda Taylor</h3>
+                                <p class="doctor-title">MD, Pediatric Pain</p>
+                                <span class="doctor-specialty">Pediatric Pain</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in pain management for children and adolescents.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-amanda-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=amanda-taylor" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Richard Scott</h3>
+                                <p class="doctor-title">MD, Interventional Pain</p>
+                                <span class="doctor-specialty">Vertiflex Procedure</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in minimally invasive lumbar spinal stenosis treatment.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-richard-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=richard-scott" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elizabeth Harris</h3>
+                                <p class="doctor-title">MD, Physical Medicine</p>
+                                <span class="doctor-specialty">Fibromyalgia</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in multidisciplinary fibromyalgia treatment programs.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elizabeth-harris.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elizabeth-harris" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Matthew Clark</h3>
+                                <p class="doctor-title">MD, Sports Medicine</p>
+                                <span class="doctor-specialty">Regenerative Medicine</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in PRP and stem cell therapies for musculoskeletal pain.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-matthew-clark.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=matthew-clark" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria King</h3>
+                                <p class="doctor-title">MD, Anesthesiology</p>
+                                <span class="doctor-specialty">Peripheral Nerve Stimulation</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in advanced neuromodulation for extremity pain.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-king.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-king" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Brooks</h3>
+                                <p class="doctor-title">MD, Pain Medicine</p>
+                                <span class="doctor-specialty">Multidisciplinary Pain</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in comprehensive pain management combining multiple treatment modalities.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-brooks.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-brooks" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Pain Management Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-syringe"></i> Epidural Steroid Injections</a></li>
+                        <li><a href="#"><i class="fas fa-brain"></i> Nerve Blocks</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Radiofrequency Ablation</a></li>
+                        <li><a href="#"><i class="fas fa-wave-square"></i> Spinal Cord Stimulation</a></li>
+                        <li><a href="#"><i class="fas fa-joint"></i> Joint Injections</a></li>
+                        <li><a href="#"><i class="fas fa-pills"></i> Medication Management</a></li>
+                        <li><a href="#"><i class="fas fa-dumbbell"></i> Physical Therapy</a></li>
+                        <li><a href="#"><i class="fas fa-spa"></i> Acupuncture</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Vertiflex Procedure</a></li>
+                        <li><a href="#"><i class="fas fa-dna"></i> Regenerative Medicine</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Conditions We Treat</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-bone"></i> Back & Neck Pain</a></li>
+                        <li><a href="#"><i class="fas fa-head-side-virus"></i> Headaches & Migraines</a></li>
+                        <li><a href="#"><i class="fas fa-wheelchair"></i> Arthritis Pain</a></li>
+                        <li><a href="#"><i class="fas fa-burn"></i> Neuropathic Pain</a></li>
+                        <li><a href="#"><i class="fas fa-running"></i> Sports Injuries</a></li>
+                        <li><a href="#"><i class="fas fa-dizzy"></i> Fibromyalgia</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Post-Surgical Pain</a></li>
+                        <li><a href="#"><i class="fas fa-user-injured"></i> CRPS</a></li>
+                        <li><a href="#"><i class="fas fa-ribbon"></i> Cancer Pain</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Pediatric Pain</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

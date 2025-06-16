@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Medicine Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-light: #6ee7b7;
+            --primary-dark: #047857;
+            --secondary: #3b82f6;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --lab-medicine: #d1fae5;
+            --lab-medicine-text: #065f46;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--lab-medicine);
+            color: var(--lab-medicine-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: #fce7f3;
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: #e0f2fe;
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Laboratory Medicine Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="laboratory-medicine.html">Laboratory Medicine</a>
+                </div>
+                <p>Expert diagnostic services in clinical pathology, laboratory analysis, and diagnostic testing to support accurate medical diagnoses and treatment monitoring</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Laboratory Medicine Specialists</h2>
+                        <p>Meet our team of board-certified laboratory medicine physicians specializing in various diagnostic disciplines to provide accurate and timely test results.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Clinical Chemistry</option>
+                                <option>Hematology</option>
+                                <option>Microbiology</option>
+                                <option>Immunology</option>
+                                <option>Molecular Diagnostics</option>
+                                <option>Transfusion Medicine</option>
+                                <option>Toxicology</option>
+                                <option>Point-of-Care Testing</option>
+                                <option>Laboratory Management</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Main Laboratory</option>
+                                <option>Clinical Chemistry Lab</option>
+                                <option>Microbiology Lab</option>
+                                <option>Hematology Lab</option>
+                                <option>Blood Bank</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jonathan Carter</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Clinical Chemistry</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in biochemical analysis and metabolic disease testing with 15 years of experience.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jonathan-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jonathan-carter" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elizabeth Bennett</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Hematology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in blood disorders diagnosis and hematologic malignancy testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elizabeth-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elizabeth-bennett" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michael Thompson</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Microbiology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in infectious disease diagnostics and antimicrobial resistance testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michael-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michael-thompson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Immunology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in autoimmune disease testing and allergy diagnostics.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Robert Wilson</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Molecular Diagnostics</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in genetic testing and molecular pathology techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-robert-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=robert-wilson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Patricia Johnson</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Transfusion Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in blood banking and transfusion-related testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-patricia-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=patricia-johnson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. William Adams</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Toxicology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in drug testing and poison analysis.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-william-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=william-adams" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jennifer Chen</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Point-of-Care Testing</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in rapid diagnostic testing and bedside monitoring.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jennifer-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jennifer-chen" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. David Kim</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Laboratory Management</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in laboratory quality control and accreditation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-david-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=david-kim" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sarah Williams</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Clinical Chemistry</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in endocrinology testing and metabolic panels.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sarah-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sarah-williams" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Richard Park</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Hematology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in coagulation disorders and bleeding diatheses.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-richard-park.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=richard-park" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Rodriguez</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Microbiology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in virology and emerging infectious diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-rodriguez" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Thomas Nguyen</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Immunology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in immunodeficiency testing and vaccine response evaluation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-thomas-nguyen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=thomas-nguyen" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Smith</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Molecular Diagnostics</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in cancer genomics and personalized medicine testing.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-smith.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-smith" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. James Wilson</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Transfusion Medicine</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in blood component therapy and apheresis procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-james-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=james-wilson" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Lee</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Toxicology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in workplace drug testing and forensic toxicology.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-lee" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Rachel Green</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Point-of-Care Testing</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in critical care testing and emergency department diagnostics.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-rachel-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=rachel-green" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Daniel Brown</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Laboratory Management</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in laboratory information systems and automation.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-daniel-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=daniel-brown" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jessica White</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Clinical Chemistry</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in therapeutic drug monitoring and pharmacogenomics.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jessica-white.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jessica-white" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Christopher Taylor</h3>
+                                <p class="doctor-title">MD, Laboratory Medicine</p>
+                                <span class="doctor-specialty">Hematology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in hemoglobinopathies and hematologic flow cytometry.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-christopher-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=christopher-taylor" class="btn btn-primary">Book Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">Laboratory Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Clinical Chemistry Testing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hematology Analysis</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Microbiology Cultures</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Immunology Panels</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Molecular Diagnostics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blood Bank Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Toxicology Screens</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Urinalysis</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coagulation Studies</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Testing Locations</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-flask"></i> Main Clinical Lab</a></li>
+                        <li><a href="#"><i class="fas fa-microscope"></i> Hematology Lab</a></li>
+                        <li><a href="#"><i class="fas fa-dna"></i> Molecular Lab</a></li>
+                        <li><a href="#"><i class="fas fa-vial"></i> Chemistry Lab</a></li>
+                        <li><a href="#"><i class="fas fa-bacteria"></i> Microbiology Lab</a></li>
+                    </ul>
+                    
+                    <div style="margin-top: 30px; background: var(--light); padding: 20px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 15px; color: var(--dark);">Test Results Hotline</h4>
+                        <p style="margin-bottom: 15px; font-size: 0.9rem;">For laboratory test results and interpretation, contact our specialists:</p>
+                        <a href="tel:+18005551236" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-phone-alt" style="margin-right: 8px;"></i> Call (800) 555-1236
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple filter functionality demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterSelects = document.querySelectorAll('.filter-select');
+            const resetBtn = document.querySelector('.reset-btn');
+            
+            // Filter functionality would go here in a real implementation
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    console.log(`Filter by ${this.previousElementSibling.textContent}: ${this.value}`);
+                    // In a real implementation, this would filter the doctor cards
+                });
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                filterSelects.forEach(select => {
+                    select.value = select.querySelector('option').value;
+                });
+                console.log('Filters reset');
+                // In a real implementation, this would show all doctor cards
+            });
+        });
+    </script>
+</body>
+</html>

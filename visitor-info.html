@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Information | HealthPlus Medical Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ed;
+            --primary-light: #b5d5fd;
+            --primary-dark: #215bb6;
+            --secondary: #10b981;
+            --accent: #5c8bf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .info-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Visitor Guidelines */
+        .guidelines {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .guidelines h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .guideline-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .guideline-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .guideline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .guideline-content p {
+            color: var(--gray);
+        }
+        
+        /* Hospital Map */
+        .hospital-map {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .map-container {
+            height: 500px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        
+        .map-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        /* Visiting Hours */
+        .hours-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .department-hours {
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+        }
+        
+        .department-hours h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .hours-list li span:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Amenities */
+        .amenities-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .amenity-card {
+            text-align: center;
+        }
+        
+        .amenity-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .amenity-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .amenity-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Button Styles */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(58, 134, 237, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .guidelines, .hours-section, .amenities-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Visitor Information</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="about.html">About Us</a>
+                    <span>/</span>
+                    <a href="visitor-info.html">Visitor Information</a>
+                </div>
+                <p>Everything you need to know before visiting HealthPlus Medical Center</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>123 Medical Center Drive, Healthville, HV 12345</p>
+                    <a href="#map" class="btn btn-outline">View on Map</a>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Contact</h3>
+                    <p>Main Hospital: (555) 123-4567<br>Patient Information: (555) 123-4568</p>
+                    <a href="contact.html" class="btn btn-outline">All Contacts</a>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Parking</h3>
+                    <p>Free parking available in the visitor garage. Valet service at main entrance ($5 fee).</p>
+                    <a href="#parking" class="btn btn-outline">Parking Map</a>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Visitor Guidelines</h2>
+                <p>To ensure the safety and comfort of all patients and visitors, please follow these guidelines</p>
+            </div>
+            
+            <div class="guidelines">
+                <h2>Hospital Policies</h2>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Visitor Check-In</h3>
+                        <p>All visitors must check in at the information desk and wear a visitor badge while in the hospital.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Patient Safety</h3>
+                        <p>Visitors with colds, sore throats or any contagious diseases should not visit patients.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-smoking-ban"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Smoking Policy</h3>
+                        <p>HealthPlus is a smoke-free campus. Smoking is not permitted anywhere on hospital property.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Cell Phone Use</h3>
+                        <p>Cell phones may be used in most areas except where posted (ICU, NICU, etc.). Please be considerate of others.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Photography</h3>
+                        <p>Photography is prohibited in patient care areas without prior authorization.</p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="guideline-content">
+                        <h3>Gifts for Patients</h3>
+                        <p>Please check with nursing staff before bringing food, flowers or gifts to patient rooms.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Hospital Map</h2>
+                <p>Find your way around our medical center with this interactive map</p>
+            </div>
+            
+            <div class="hospital-map" id="map">
+                <h2>Main Hospital Campus</h2>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt" style="margin-right: 10px;"></i>
+                        Interactive Hospital Map
+                    </div>
+                </div>
+                
+                <div class="map-legend">
+                    <div class="map-legend-item">
+                        <div class="legend-color" style="background: #3a86ed;"></div>
+                        <span>Visitor Parking</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-color" style="background: #10b981;"></div>
+                        <span>Main Entrance</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-color" style="background: #f59e0b;"></div>
+                        <span>Emergency Department</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-color" style="background: #5c8bf6;"></div>
+                        <span>Visitor Amenities</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <span>Restricted Areas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Visiting Hours</h2>
+                <p>Standard visiting hours for our hospital departments</p>
+            </div>
+            
+            <div class="hours-section">
+                <h2>Department Visiting Hours</h2>
+                <p>Some units may have special restrictions. Please check with nursing staff for specific guidelines.</p>
+                
+                <div class="hours-grid">
+                    <div class="department-hours">
+                        <h3>General Patient Rooms</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday-Friday</span> <span>8:00 AM - 8:00 PM</span></li>
+                            <li><span>Saturday-Sunday</span> <span>9:00 AM - 8:00 PM</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="department-hours">
+                        <h3>Intensive Care Unit</h3>
+                        <ul class="hours-list">
+                            <li><span>Daily</span> <span>10:00 AM - 6:00 PM</span></li>
+                            <li><span>Limited to 2 visitors</span> <span>at a time</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="department-hours">
+                        <h3>Maternity Ward</h3>
+                        <ul class="hours-list">
+                            <li><span>Partners</span> <span>24 hours</span></li>
+                            <li><span>Other Visitors</span> <span>10:00 AM - 8:00 PM</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="department-hours">
+                        <h3>Pediatrics</h3>
+                        <ul class="hours-list">
+                            <li><span>Parents</span> <span>24 hours</span></li>
+                            <li><span>Other Visitors</span> <span>9:00 AM - 9:00 PM</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="department-hours">
+                        <h3>Emergency Department</h3>
+                        <ul class="hours-list">
+                            <li><span>Daily</span> <span>Limited visitor access</span></li>
+                            <li><span>At nursing staff</span> <span>discretion</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="department-hours">
+                        <h3>Behavioral Health</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday-Friday</span> <span>4:00 PM - 7:00 PM</span></li>
+                            <li><span>Saturday-Sunday</span> <span>1:00 PM - 5:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Visitor Amenities</h2>
+                <p>Services and facilities available for visitors at HealthPlus</p>
+            </div>
+            
+            <div class="amenities-section">
+                <h2>Hospital Amenities</h2>
+                <p>We strive to make your visit as comfortable as possible with these services</p>
+                
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Cafeteria</h3>
+                        <p>Open daily from 6:30 AM to 8:00 PM with healthy meal options</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h3>Coffee Shop</h3>
+                        <p>Starbucks located in main lobby, open 6:00 AM to 8:00 PM</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Free WiFi</h3>
+                        <p>Connect to "HealthPlus Guest" network throughout the hospital</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Gift Shop</h3>
+                        <p>Flowers, gifts and essentials - Main lobby, 8:00 AM to 8:00 PM</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-praying-hands"></i>
+                        </div>
+                        <h3>Chapel</h3>
+                        <p>Interfaith chapel open 24 hours for prayer and meditation</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-wheelchair"></i>
+                        </div>
+                        <h3>Accessibility</h3>
+                        <p>Wheelchairs available at all entrances. Fully ADA compliant.</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h3>Lodging</h3>
+                        <p>Discounted rates at nearby hotels for patient families</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Interpreters</h3>
+                        <p>Translation services available for many languages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Library | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radiology: #dbeafe;
+            --radiology-text: #1e40af;
+            --cardiology: #fee2e2;
+            --cardiology-text: #991b1b;
+            --neurology: #e0f2fe;
+            --neurology-text: #075985;
+            --oncology: #fce7f3;
+            --oncology-text: #831843;
+            --orthopedics: #dcfce7;
+            --orthopedics-text: #166534;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            font-size: 1.1rem;
+            padding-right: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .search-tag {
+            background: var(--light-gray);
+            color: var(--gray);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .category-image {
+            height: 180px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .category-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .category-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .category-specialty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .specialty-radiology {
+            background: var(--radiology);
+            color: var(--radiology-text);
+        }
+        
+        .specialty-cardiology {
+            background: var(--cardiology);
+            color: var(--cardiology-text);
+        }
+        
+        .specialty-neurology {
+            background: var(--neurology);
+            color: var(--neurology-text);
+        }
+        
+        .specialty-oncology {
+            background: var(--oncology);
+            color: var(--oncology-text);
+        }
+        
+        .specialty-orthopedics {
+            background: var(--orthopedics);
+            color: var(--orthopedics-text);
+        }
+        
+        .category-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .category-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .category-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Articles Section */
+        .articles-section {
+            margin-top: 60px;
+        }
+        
+        .articles-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .view-all i {
+            margin-left: 5px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .article-image {
+            height: 180px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .article-content {
+            padding: 20px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-category {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .article-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .article-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .article-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .article-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .article-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Procedures Section */
+        .procedures-section {
+            margin-top: 60px;
+        }
+        
+        .procedures-list {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .procedure-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .procedure-item:last-child {
+            border-bottom: none;
+        }
+        
+        .procedure-item:hover {
+            background: #f8fafc;
+        }
+        
+        .procedure-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .procedure-title {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .procedure-category {
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .procedure-desc {
+            color: var(--gray);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .procedure-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .procedure-link i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-question i {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer-inner {
+            padding: 0 0 20px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-question {
+            background: #f8fafc;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .categories-grid, .articles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .articles-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .categories-grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .search-input {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .search-btn {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Health Library</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="resources.html">Resources</a>
+                    <span>/</span>
+                    <a href="health-library.html">Health Library</a>
+                </div>
+                <p>Trusted medical information on conditions, treatments, procedures, and wellness from our healthcare experts.</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search health topics, conditions, or treatments...">
+                    <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="search-tags">
+                    <div class="search-tag">MRI</div>
+                    <div class="search-tag">Diabetes</div>
+                    <div class="search-tag">Heart Disease</div>
+                    <div class="search-tag">Cancer Screening</div>
+                    <div class="search-tag">Physical Therapy</div>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Browse by Category</h2>
+                <p>Explore our comprehensive health information organized by specialty and condition type.</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- Category 1 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Radiology & Imaging</h3>
+                        <span class="category-specialty specialty-radiology">Radiology</span>
+                        <p class="category-desc">Learn about different imaging tests, how to prepare, and what to expect during your procedure.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Heart & Vascular</h3>
+                        <span class="category-specialty specialty-cardiology">Cardiology</span>
+                        <p class="category-desc">Information on heart conditions, treatments, and maintaining cardiovascular health.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1579165466749-5650df9d1e0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Brain & Nervous System</h3>
+                        <span class="category-specialty specialty-neurology">Neurology</span>
+                        <p class="category-desc">Resources on neurological conditions, brain health, and nervous system disorders.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Cancer Care</h3>
+                        <span class="category-specialty specialty-oncology">Oncology</span>
+                        <p class="category-desc">Information about cancer types, treatments, screening, and survivorship.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category 5 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Bones & Joints</h3>
+                        <span class="category-specialty specialty-orthopedics">Orthopedics</span>
+                        <p class="category-desc">Resources on bone health, joint conditions, fractures, and orthopedic treatments.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Category 6 -->
+                <div class="category-card">
+                    <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Pediatrics</h3>
+                        <span class="category-count">45+ Articles</span>
+                        <p class="category-desc">Child health information from infancy through adolescence and parenting resources.</p>
+                        <a href="#" class="category-link">View Articles <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="articles-section">
+                <div class="articles-header">
+                    <h2 class="content-title">Featured Articles</h2>
+                    <a href="#" class="view-all">View All Articles <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="articles-grid">
+                    <!-- Article 1 -->
+                    <div class="article-card">
+                        <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Radiology</span>
+                                <span>Jun 15, 2023</span>
+                            </div>
+                            <h3 class="article-title">Understanding Your MRI Results</h3>
+                            <p class="article-excerpt">Learn how to interpret common MRI findings and what they mean for your health...</p>
+                            <a href="#" class="article-link">Read More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 2 -->
+                    <div class="article-card">
+                        <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Cardiology</span>
+                                <span>Jun 10, 2023</span>
+                            </div>
+                            <h3 class="article-title">Heart-Healthy Diet: Foods to Eat and Avoid</h3>
+                            <p class="article-excerpt">Discover the best foods for cardiovascular health and which to limit for optimal heart function...</p>
+                            <a href="#" class="article-link">Read More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 3 -->
+                    <div class="article-card">
+                        <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1579165466749-5650df9d1e0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Neurology</span>
+                                <span>Jun 5, 2023</span>
+                            </div>
+                            <h3 class="article-title">Recognizing the Early Signs of Stroke</h3>
+                            <p class="article-excerpt">Learn the FAST acronym and other critical symptoms that require immediate medical attention...</p>
+                            <a href="#" class="article-link">Read More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="procedures-section">
+                <div class="section-title">
+                    <h2>Common Procedures</h2>
+                    <p>Learn about diagnostic tests, treatments, and surgical procedures with our patient education guides.</p>
+                </div>
+                
+                <div class="procedures-list">
+                    <!-- Procedure 1 -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <h3 class="procedure-title">CT Scan (Computed Tomography)</h3>
+                            <span class="procedure-category specialty-radiology">Radiology</span>
+                        </div>
+                        <p class="procedure-desc">A diagnostic imaging procedure that uses X-rays to create detailed cross-sectional images of your body.</p>
+                        <a href="#" class="procedure-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <!-- Procedure 2 -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <h3 class="procedure-title">Mammogram</h3>
+                            <span class="procedure-category specialty-radiology">Radiology</span>
+                        </div>
+                        <p class="procedure-desc">An X-ray of the breast used to screen for and detect breast cancer in its early stages.</p>
+                        <a href="#" class="procedure-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <!-- Procedure 3 -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <h3 class="procedure-title">Cardiac Catheterization</h3>
+                            <span class="procedure-category specialty-cardiology">Cardiology</span>
+                        </div>
+                        <p class="procedure-desc">A procedure to examine how well your heart is working by checking blood flow and pressure.</p>
+                        <a href="#" class="procedure-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <!-- Procedure 4 -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <h3 class="procedure-title">Colonoscopy</h3>
+                            <span class="procedure-category">Gastroenterology</span>
+                        </div>
+                        <p class="procedure-desc">An exam used to detect changes or abnormalities in the large intestine and rectum.</p>
+                        <a href="#" class="procedure-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <!-- Procedure 5 -->
+                    <div class="procedure-item">
+                        <div class="procedure-header">
+                            <h3 class="procedure-title">Knee Arthroscopy</h3>
+                            <span class="procedure-category specialty-orthopedics">Orthopedics</span>
+                        </div>
+                        <p class="procedure-desc">A minimally invasive surgical procedure to diagnose and treat knee joint problems.</p>
+                        <a href="#" class="procedure-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find answers to common questions about medical tests, procedures, and health conditions.</p>
+                </div>
+                
+                <div class="faq-list">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How should I prepare for an MRI scan?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Preparation for an MRI scan depends on the area being examined. Generally, you may be asked to:</p>
+                                <ul>
+                                    <li>Remove all metal objects (jewelry, watches, hairpins)</li>
+                                    <li>Wear comfortable clothing without metal zippers or buttons</li>
+                                    <li>Inform your doctor if you have any metal implants or devices</li>
+                                    <li>Follow specific instructions about eating or drinking beforehand</li>
+                                </ul>
+                                <p>Your radiology team will provide detailed preparation instructions based on your specific scan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What's the difference between a CT scan and an MRI?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>CT (Computed Tomography) and MRI (Magnetic Resonance Imaging) are both imaging tests but use different technologies:</p>
+                                <ul>
+                                    <li><strong>CT scans</strong> use X-rays to create cross-sectional images and are better for viewing bones, detecting cancers, and examining chest/abdominal issues.</li>
+                                    <li><strong>MRIs</strong> use magnetic fields and radio waves to create detailed images of soft tissues like the brain, spinal cord, muscles, and ligaments.</li>
+                                    <li>CT scans are typically faster (5-10 minutes) while MRIs take longer (15-90 minutes).</li>
+                                    <li>CT involves radiation exposure while MRI does not.</li>
+                                </ul>
+                                <p>Your doctor will recommend the most appropriate test based on your medical needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is radiation from imaging tests dangerous?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>The small amount of radiation used in diagnostic imaging tests like X-rays and CT scans is generally considered safe when medically necessary. However:</p>
+                                <ul>
+                                    <li>Radiation exposure is cumulative over a lifetime</li>
+                                    <li>Modern equipment uses the lowest possible dose</li>
+                                    <li>Benefits of accurate diagnosis typically outweigh risks</li>
+                                    <li>Pregnant women should inform their doctor as radiation may affect the fetus</li>
+                                </ul>
+                                <p>MRIs and ultrasounds do not use ionizing radiation. Discuss any concerns with your healthcare provider.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long does it take to get imaging results?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <p>Result turnaround times vary depending on:</p>
+                                <ul>
+                                    <li><strong>Type of exam:</strong> Routine X-rays may be read same day, while complex MRIs may take 1-2 days</li>
+                                    <li><strong>Facility:</strong> Hospital-based imaging often has faster results than outpatient centers</li>
+                                    <li><strong>Urgency:</strong> Emergency cases are prioritized</li>
+                                    <li><strong>Your provider:</strong> Some doctors receive results before patients and will contact you</li>
+                                </ul>
+                                <p>Most facilities provide results within 24-48 hours. You can typically access results through your patient portal once they're finalized.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Search tag functionality
+        document.querySelectorAll('.search-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                const searchInput = document.querySelector('.search-input');
+                searchInput.value = tag.textContent;
+                searchInput.focus();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OB/GYN Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>OB/GYN Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="obgyn.html">OB/GYN</a>
+                </div>
+                <p>Comprehensive women's healthcare focusing on pregnancy, childbirth, and disorders of the reproductive system</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our OB/GYN Physicians</h2>
+                        <p>Meet our team of board-certified obstetricians and gynecologists dedicated to providing compassionate, personalized care for women at all stages of life.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>General OB/GYN</option>
+                                <option>Maternal-Fetal Medicine</option>
+                                <option>Gynecologic Oncology</option>
+                                <option>Reproductive Endocrinology</option>
+                                <option>Urogynecology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Women's Health Center</option>
+                                <option>Maternity Pavilion</option>
+                                <option>Northside Clinic</option>
+                                <option>Downtown Clinic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sarah Johnson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Board-certified OB/GYN with 15 years of experience in comprehensive women's health and preventive care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sarah-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sarah-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michael Chen</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Oncology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in the diagnosis and treatment of gynecologic cancers with minimally invasive techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michael-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michael-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Rodriguez</h3>
+                                <p class="doctor-title">MD, Maternal-Fetal Medicine</p>
+                                <span class="doctor-specialty">High-Risk Pregnancy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in managing complex pregnancies and fetal conditions with compassionate care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jennifer Lee</h3>
+                                <p class="doctor-title">MD, Reproductive Endocrinology</p>
+                                <span class="doctor-specialty">Fertility Specialist</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Helping couples achieve their dream of parenthood through advanced fertility treatments.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jennifer-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jennifer-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Robert Williams</h3>
+                                <p class="doctor-title">MD, Urogynecology</p>
+                                <span class="doctor-specialty">Pelvic Floor Disorders</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in treatment of urinary incontinence and pelvic organ prolapse.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-robert-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=robert-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Amina Hassan</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Adolescent Gynecology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for teens and young women with a focus on education.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-amina-hassan.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=amina-hassan" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Patricia O'Connor</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Menopause Specialist</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Helps women navigate perimenopause and menopause with personalized treatment plans.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-patricia-oconnor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=patricia-oconnor" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. David Kim</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Minimally Invasive Surgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in laparoscopic and robotic gynecologic surgeries with faster recovery times.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-david-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=david-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Jessica Dawson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Family Planning</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive contraceptive counseling and reproductive health services.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-jessica-dawson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=jessica-dawson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nicole Brown</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in preventive care, annual exams, and routine gynecologic care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nicole-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nicole-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Rachel Smith</h3>
+                                <p class="doctor-title">MD, Maternal-Fetal Medicine</p>
+                                <span class="doctor-specialty">High-Risk Pregnancy</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in managing diabetes in pregnancy and other complex maternal conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-rachel-smith.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=rachel-smith" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lauren Taylor</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Surgery</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in hysterectomy, fibroid treatment, and endometriosis management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lauren-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lauren-taylor" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Michelle Wilson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care with a patient-centered approach.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-michelle-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=michelle-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Christopher Lee</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Sexual Health</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in sexual dysfunction and intimacy issues for women.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-christopher-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=christopher-lee" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Hernandez</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for women through all stages of life.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-hernandez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-hernandez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Martin</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Urogynecology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in treatment of urinary incontinence and pelvic floor disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-martin.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-martin" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Wilson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care with a holistic approach.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Henry Thompson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Minimally Invasive Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in laparoscopic and robotic gynecologic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-henry-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=henry-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 19 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Clark</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Adolescent Gynecology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span> <p class="doctor-bio">Expert in laparoscopic and robotic gynecologic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-henry-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=henry-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>                        <!-- Doctor 20 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Family Planning</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides comprehensive contraceptive counseling and reproductive health services.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 21 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Johnson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for women through all stages of life.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 22 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emma Davis</h3>
+                                <p class="doctor-title">MD, Maternal-Fetal Medicine</p>
+                                <span class="doctor-specialty">High-Risk Pregnancy</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Expert in managing complex pregnancies and fetal conditions.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emma-davis.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emma-davis" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 23 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Amelia Wilson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Surgery</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive surgical techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-amelia-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=amelia-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 24 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Anderson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Menopause Specialist</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Helps women navigate perimenopause and menopause.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-anderson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-anderson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 25 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Harper Taylor</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-harper-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=harper-taylor" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 26 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Evelyn White</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Adolescent Gynecology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for teens and young women.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-evelyn-white.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=evelyn-white" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 27 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Abigail Harris</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Urogynecology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in pelvic floor disorders and urinary incontinence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-abigail-harris.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=abigail-harris" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 28 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Emily Clark</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides comprehensive women's healthcare services.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-emily-clark.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=emily-clark" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 29 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elizabeth Lewis</h3>
+                                <p class="doctor-title">MD, Reproductive Endocrinology</p>
+                                <span class="doctor-specialty">Fertility Specialist</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Helping couples achieve their dream of parenthood.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elizabeth-lewis.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elizabeth-lewis" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 30 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sofia Walker</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Oncology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in the diagnosis and treatment of gynecologic cancers.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sofia-walker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sofia-walker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 31 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Avery Hall</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for women of all ages.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-avery-hall.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=avery-hall" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 32 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Young</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Minimally Invasive Surgery</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in laparoscopic and robotic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-young.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-young" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 33 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria King</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Family Planning</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides comprehensive contraceptive counseling.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-king.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-king" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 34 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Madison Scott</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-madison-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=madison-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 35 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lily Green</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Menopause Specialist</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Helps women navigate perimenopause and menopause.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lily-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lily-green" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 36 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Chloe Adams</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Adolescent Gynecology</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for teens and young women.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-chloe-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=chloe-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 37 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Baker</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides comprehensive women's healthcare services.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-baker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-baker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 38 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Riley Nelson</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Surgery</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in minimally invasive surgical techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-riley-nelson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=riley-nelson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 39 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nora Carter</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Urogynecology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in pelvic floor disorders and urinary incontinence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nora-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nora-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 40 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Hazel Mitchell</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-hazel-mitchell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=hazel-mitchell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 41 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Violet Perez</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Reproductive Endocrinology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Helping couples achieve their dream of parenthood.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-violet-perez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=violet-perez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 42 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Aurora Roberts</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for women of all ages.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-aurora-roberts.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=aurora-roberts" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 43 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Savannah Turner</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Maternal-Fetal Medicine</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in managing high-risk pregnancies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-savannah-turner.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=savannah-turner" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 44 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Brooklyn Phillips</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Provides comprehensive women's healthcare services.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-brooklyn-phillips.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=brooklyn-phillips" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 45 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Bella Campbell</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Family Planning</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Provides comprehensive contraceptive counseling.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-bella-campbell.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=bella-campbell" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 46 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Stella Parker</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Gynecologic Oncology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in the diagnosis and treatment of gynecologic cancers.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-stella-parker.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=stella-parker" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 47 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Skylar Evans</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides compassionate care for women of all ages.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-skylar-evans.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=skylar-evans" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 48 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Zoey Edwards</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Minimally Invasive Surgery</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in laparoscopic and robotic procedures.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-zoey-edwards.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=zoey-edwards" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 49 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nova Collins</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">Urogynecology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in pelvic floor disorders and urinary incontinence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nova-collins.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nova-collins" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 50 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Eleanor Stewart</h3>
+                                <p class="doctor-title">MD, Obstetrics & Gynecology</p>
+                                <span class="doctor-specialty">General OB/GYN</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive obstetric and gynecologic care.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-eleanor-stewart.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=eleanor-stewart" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3 class="sidebar-title">OB/GYN Services</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-baby"></i> Prenatal Care</a></li>
+                        <li><a href="#"><i class="fas fa-procedures"></i> Labor & Delivery</a></li>
+                        <li><a href="#"><i class="fas fa-uterus"></i> Gynecologic Exams</a></li>
+                        <li><a href="#"><i class="fas fa-dna"></i> Genetic Counseling</a></li>
+                        <li><a href="#"><i class="fas fa-pills"></i> Birth Control</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Menopause Management</a></li>
+                        <li><a href="#"><i class="fas fa-microscope"></i> Fertility Treatments</a></li>
+                        <li><a href="#"><i class="fas fa-syringe"></i> HPV Vaccinations</a></li>
+                        <li><a href="#"><i class="fas fa-x-ray"></i> Mammography</a></li>
+                        <li><a href="#"><i class="fas fa-bone"></i> Osteoporosis Screening</a></li>
+                    </ul>
+                    
+                    <h3 class="sidebar-title" style="margin-top: 30px;">Quick Links</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-calendar-check"></i> Schedule Appointment</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Patient Forms</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple filter functionality would be added here in a real implementation
+        document.querySelector('.reset-btn').addEventListener('click', function() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+        });
+    </script>
+</body>
+</html>

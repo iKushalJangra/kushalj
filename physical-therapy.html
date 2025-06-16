@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Therapy Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #93c5fd;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --pt: #dbeafe;
+            --pt-text: #1e40af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Therapist Grid */
+        .therapists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .therapist-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .therapist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .therapist-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .therapist-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .therapist-content {
+            padding: 25px;
+        }
+        
+        .therapist-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .therapist-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .therapist-specialty {
+            display: inline-block;
+            background: var(--pt);
+            color: var(--pt-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .therapist-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: #fce7f3;
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: #e0f2fe;
+            color: #075985;
+        }
+        
+        .therapist-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .therapist-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .therapists-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .therapist-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Physical Therapy Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="physical-therapy.html">Physical Therapy</a>
+                </div>
+                <p>Expert rehabilitation services including orthopedic, neurological, pediatric, and sports physical therapy for improved mobility and pain relief</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Physical Therapists</h2>
+                        <p>Meet our team of licensed physical therapists specializing in various rehabilitation techniques to help you regain mobility and reduce pain.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Orthopedic PT</option>
+                                <option>Sports PT</option>
+                                <option>Neurological PT</option>
+                                <option>Pediatric PT</option>
+                                <option>Geriatric PT</option>
+                                <option>Vestibular Rehabilitation</option>
+                                <option>Manual Therapy</option>
+                                <option>Pelvic Health PT</option>
+                                <option>Cardiopulmonary PT</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Availability:</span>
+                            <select class="filter-select">
+                                <option>All Times</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Weekends</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Main Rehabilitation Center</option>
+                                <option>Sports Medicine Clinic</option>
+                                <option>Pediatric Therapy Center</option>
+                                <option>Neurological Rehab Unit</option>
+                                <option>Orthopedic Clinic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="therapists-grid">
+                        <!-- Therapist 1 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Sarah Johnson</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Orthopedic PT</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Specializes in post-surgical rehabilitation and joint replacement recovery with 12 years of experience.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-sarah-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=sarah-johnson" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 2 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Michael Chen</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Sports PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Expert in athletic injury prevention and performance enhancement for competitive athletes.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-michael-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=michael-chen" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 3 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Emily Rodriguez</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Neurological PT</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Specializes in stroke rehabilitation and movement disorder management.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-emily-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=emily-rodriguez" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 4 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. James Wilson</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Pediatric PT</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Expert in developmental delays and childhood neurological conditions.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-james-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=james-wilson" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 5 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Olivia Martinez</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Geriatric PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Specializes in fall prevention and mobility improvement for seniors.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-olivia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=olivia-martinez" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 6 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Robert Kim</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Vestibular Rehabilitation</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Expert in treating vertigo, dizziness, and balance disorders.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-robert-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=robert-kim" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 7 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Patricia Brown</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Manual Therapy</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Specializes in hands-on techniques for pain relief and improved mobility.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-patricia-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=patricia-brown" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 8 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Jennifer Lee</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Pelvic Health PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Expert in treating pelvic floor dysfunction and pregnancy-related pain.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-jennifer-lee.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=jennifer-lee" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 9 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. David Wilson</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Cardiopulmonary PT</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Specializes in rehabilitation for heart and lung conditions.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-david-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=david-wilson" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 10 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Sophia Adams</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Orthopedic PT</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Expert in spine rehabilitation and chronic pain management.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-sophia-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=sophia-adams" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 11 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Richard Park</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Sports PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Specializes in return-to-sport protocols and athletic performance.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-richard-park.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=richard-park" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 12 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Benjamin Taylor</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Neurological PT</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Expert in multiple sclerosis and Parkinson's disease rehabilitation.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-benjamin-taylor.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=benjamin-taylor" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 13 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Jessica Green</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Pediatric PT</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Specializes in cerebral palsy and developmental coordination disorders.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-jessica-green.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=jessica-green" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 14 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Christopher White</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Geriatric PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Expert in osteoporosis management and arthritis pain relief.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-christopher-white.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=christopher-white" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 15 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Amanda Scott</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Vestibular Rehabilitation</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Specializes in post-concussion syndrome and BPPV treatment.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-amanda-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=amanda-scott" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 16 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Daniel Harris</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Manual Therapy</span>
+                                <span class="therapist-shift shift-morning">Morning Shift</span>
+                                <p class="therapist-bio">Expert in myofascial release and trigger point therapy.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-daniel-harris.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=daniel-harris" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 17 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Rachel Kim</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Pelvic Health PT</span>
+                                <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="therapist-bio">Specializes in postpartum recovery and pelvic pain syndromes.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-rachel-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=rachel-kim" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist 18 -->
+                        <div class="therapist-card">
+                            <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="therapist-content">
+                                <h3 class="therapist-name">Dr. Thomas Brown</h3>
+                                <p class="therapist-title">DPT, Physical Therapy</p>
+                                <span class="therapist-specialty">Cardiopulmonary PT</span>
+                                <span class="therapist-shift shift-evening">Evening Shift</span>
+                                <p class="therapist-bio">Expert in pulmonary rehabilitation and post-COVID recovery.</p>
+                                <div class="therapist-actions">
+                                    <a href="dr-thomas-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?therapist=thomas-brown" class="btn btn-primary">Book Session</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                                                <!-- Therapist 19 -->
+                                                <div class="therapist-card">
+                                                    <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                                                    <div class="therapist-content">
+                                                        <h3 class="therapist-name">Dr. Elizabeth Wong</h3>
+                                                        <p class="therapist-title">DPT, Physical Therapy</p>
+                                                        <span class="therapist-specialty">Orthopedic PT</span>
+                                                        <span class="therapist-shift shift-morning">Morning Shift</span>
+                                                        <p class="therapist-bio">Specializes in shoulder rehabilitation and sports-related injuries.</p>
+                                                        <div class="therapist-actions">
+                                                            <a href="dr-elizabeth-wong.html" class="btn btn-outline">View Profile</a>
+                                                            <a href="appointment.html?therapist=elizabeth-wong" class="btn btn-primary">Book Session</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Therapist 20 -->
+                                                <div class="therapist-card">
+                                                    <div class="therapist-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                                                    <div class="therapist-content">
+                                                        <h3 class="therapist-name">Dr. Kevin Nguyen</h3>
+                                                        <p class="therapist-title">DPT, Physical Therapy</p>
+                                                        <span class="therapist-specialty">Sports PT</span>
+                                                        <span class="therapist-shift shift-afternoon">Afternoon Shift</span>
+                                                        <p class="therapist-bio">Expert in ACL rehabilitation and running injury prevention.</p>
+                                                        <div class="therapist-actions">
+                                                            <a href="dr-kevin-nguyen.html" class="btn btn-outline">View Profile</a>
+                                                            <a href="appointment.html?therapist=kevin-nguyen" class="btn btn-primary">Book Session</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="pagination">
+                                                <a href="#" class="active">1</a>
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#"><i class="fas fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="sidebar">
+                                            <h3 class="sidebar-title">Physical Therapy Services</h3>
+                                            <ul class="sidebar-list">
+                                                <li><a href="#"><i class="fas fa-bone"></i> Orthopedic Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-brain"></i> Neurological Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-child"></i> Pediatric Physical Therapy</a></li>
+                                                <li><a href="#"><i class="fas fa-running"></i> Sports Injury Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-wheelchair"></i> Geriatric Physical Therapy</a></li>
+                                                <li><a href="#"><i class="fas fa-vest"></i> Vestibular Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-hands"></i> Manual Therapy</a></li>
+                                                <li><a href="#"><i class="fas fa-procedures"></i> Post-Surgical Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-heartbeat"></i> Cardiopulmonary Rehabilitation</a></li>
+                                                <li><a href="#"><i class="fas fa-female"></i> Women's Health PT</a></li>
+                                            </ul>
+                                            
+                                            <h3 class="sidebar-title" style="margin-top: 30px;">Quick Links</h3>
+                                            <ul class="sidebar-list">
+                                                <li><a href="#"><i class="fas fa-calendar-check"></i> Schedule an Appointment</a></li>
+                                                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Our Locations</a></li>
+                                                <li><a href="#"><i class="fas fa-file-alt"></i> Patient Forms</a></li>
+                                                <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                                                <li><a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+                                            </ul>
+                                            
+                                            <div style="background: var(--pt); padding: 20px; border-radius: 8px; margin-top: 30px;">
+                                                <h4 style="margin-bottom: 15px; color: var(--pt-text);">Need Immediate Help?</h4>
+                                                <p style="margin-bottom: 15px; font-size: 0.9rem;">Our physical therapy team is available for urgent consultations.</p>
+                                                <a href="tel:+18005551234" class="btn btn-primary" style="width: 100%;"><i class="fas fa-phone-alt"></i> Call Now: (800) 555-1234</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </body>
+                        </html>

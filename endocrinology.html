@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endocrinology Specialists | HealthPlus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+            --morning: #fef3c7;
+            --afternoon: #fce7f3;
+            --evening: #e0e7ff;
+            --night: #e0f2fe;
+            --endocrinology: #ede9fe;
+            --endocrinology-text: #6d28d9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+            margin: 0 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-bottom: 80px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+        
+        /* Doctor Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .doctor-image {
+            height: 280px;
+            background-color: #f1f5f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .doctor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .doctor-content {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .doctor-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .doctor-specialty {
+            display: inline-block;
+            background: var(--endocrinology);
+            color: var(--endocrinology-text);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .doctor-shift {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .shift-morning {
+            background: var(--morning);
+            color: #92400e;
+        }
+        
+        .shift-afternoon {
+            background: var(--afternoon);
+            color: #831843;
+        }
+        
+        .shift-evening {
+            background: var(--evening);
+            color: #3730a3;
+        }
+        
+        .shift-night {
+            background: var(--night);
+            color: #075985;
+        }
+        
+        .doctor-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar-list a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-list a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 50px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Endocrinology Specialists</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="specialties.html">Specialties</a>
+                    <span>/</span>
+                    <a href="endocrinology.html">Endocrinology</a>
+                </div>
+                <p>Comprehensive care for hormonal disorders including diabetes, thyroid conditions, and metabolic diseases</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="content-with-sidebar">
+                <div>
+                    <div class="section-title">
+                        <h2>Our Endocrinology Physicians</h2>
+                        <p>Meet our team of board-certified endocrinologists dedicated to providing exceptional care for hormonal and metabolic disorders.</p>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by:</span>
+                            <select class="filter-select">
+                                <option>All Specialties</option>
+                                <option>Diabetes</option>
+                                <option>Thyroid Disorders</option>
+                                <option>Metabolic Disorders</option>
+                                <option>Reproductive Endocrinology</option>
+                                <option>Osteoporosis</option>
+                                <option>Pituitary Disorders</option>
+                                <option>Adrenal Disorders</option>
+                                <option>Pediatric Endocrinology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Shift:</span>
+                            <select class="filter-select">
+                                <option>All Shifts</option>
+                                <option>Morning (8AM-12PM)</option>
+                                <option>Afternoon (12PM-4PM)</option>
+                                <option>Evening (4PM-8PM)</option>
+                                <option>Night (8PM-8AM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span class="filter-label">Location:</span>
+                            <select class="filter-select">
+                                <option>All Locations</option>
+                                <option>Endocrine Center</option>
+                                <option>Diabetes Institute</option>
+                                <option>Main Hospital</option>
+                                <option>Thyroid Clinic</option>
+                                <option>Metabolic Center</option>
+                            </select>
+                        </div>
+                        
+                        <button class="reset-btn">Reset Filters</button>
+                    </div>
+                    
+                    <div class="doctors-grid">
+                        <!-- Doctor 1 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Benjamin Carter</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Diabetes Specialist</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in Type 1 and Type 2 diabetes management with advanced technologies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-benjamin-carter.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=benjamin-carter" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 2 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Olivia Bennett</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Thyroid Disorders</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in thyroid nodules, cancer, and autoimmune thyroid diseases.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-olivia-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=olivia-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 3 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ethan Thompson</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Metabolic Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in obesity, lipid disorders, and metabolic syndrome management.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ethan-thompson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ethan-thompson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 4 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Sophia Martinez</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Reproductive Endocrinology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on PCOS, infertility, and hormonal imbalances in women.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-sophia-martinez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=sophia-martinez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 5 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Lucas Wilson</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Osteoporosis</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Provides comprehensive bone health evaluation and treatment.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-lucas-wilson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=lucas-wilson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 6 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Ava Johnson</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Pituitary Disorders</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Specializes in pituitary tumors and neuroendocrine disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-ava-johnson.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=ava-johnson" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 7 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Noah Adams</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Adrenal Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Expert in adrenal insufficiency, Cushing's syndrome, and adrenal tumors.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-noah-adams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=noah-adams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 8 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Isabella Chen</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Pediatric Endocrinology</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Specializes in growth disorders, puberty, and childhood diabetes.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-isabella-chen.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=isabella-chen" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 9 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Liam Rodriguez</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Diabetes Technology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Focuses on insulin pumps, CGMs, and advanced diabetes technologies.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-liam-rodriguez.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=liam-rodriguez" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 10 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Mia Williams</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Thyroid Cancer</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Provides comprehensive care for thyroid cancer patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-mia-williams.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=mia-williams" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 11 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Elijah Kim</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Lipid Disorders</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in cholesterol management and familial hyperlipidemia.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-elijah-kim.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=elijah-kim" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 12 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Charlotte Brown</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Menopause Management</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Expert in hormonal changes during menopause and HRT.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-charlotte-brown.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=charlotte-brown" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 13 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Alexander Wright</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Type 1 Diabetes</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in autoimmune diabetes and advanced management techniques.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-alexander-wright.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=alexander-wright" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 14 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Victoria Scott</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Parathyroid Disorders</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in hyperparathyroidism and calcium metabolism disorders.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-victoria-scott.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=victoria-scott" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 15 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Nathan Reed</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Obesity Medicine</span>
+                                <span class="doctor-shift shift-evening">Evening Shift</span>
+                                <p class="doctor-bio">Specializes in medical weight management and metabolic health.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-nathan-reed.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=nathan-reed" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 16 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Scarlett Hayes</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Endocrine Genetics</span>
+                                <span class="doctor-shift shift-night">Night Shift</span>
+                                <p class="doctor-bio">Focuses on genetic endocrine disorders and familial syndromes.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-scarlett-hayes.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=scarlett-hayes" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 17 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Julian Bennett</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Adolescent Endocrinology</span>
+                                <span class="doctor-shift shift-morning">Morning Shift</span>
+                                <p class="doctor-bio">Specializes in hormonal issues during puberty and adolescence.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-julian-bennett.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=julian-bennett" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Doctor 18 -->
+                        <div class="doctor-card">
+                            <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                            <div class="doctor-content">
+                                <h3 class="doctor-name">Dr. Penelope Foster</h3>
+                                <p class="doctor-title">MD, Endocrinology</p>
+                                <span class="doctor-specialty">Transgender Endocrinology</span>
+                                <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                                <p class="doctor-bio">Expert in hormone therapy for transgender and gender diverse patients.</p>
+                                <div class="doctor-actions">
+                                    <a href="dr-penelope-foster.html" class="btn btn-outline">View Profile</a>
+                                    <a href="appointment.html?doctor=penelope-foster" class="btn btn-primary">Book Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Doctor 20 -->
+                       <div class="doctor-card">
+                      <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                      <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Cora Simmons</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Oncology</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Specializes in hormone-producing tumors and cancer-related endocrine issues.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-cora-simmons.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=cora-simmons" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 21 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Theodore Rivera</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Diabetes Prevention</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Focuses on prediabetes and lifestyle interventions to prevent diabetes.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-theodore-rivera.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=theodore-rivera" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 22 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Hazel Barnes</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Thyroid Eye Disease</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Specializes in Graves' ophthalmopathy and orbital disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-hazel-barnes.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=hazel-barnes" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 23 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Owen Coleman</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Surgery</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Specializes in surgical management of endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-owen-coleman.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=owen-coleman" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 24 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Ruby Hughes</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Polycystic Ovary Syndrome</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Expert in PCOS management and associated metabolic issues.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-ruby-hughes.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=ruby-hughes" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 25 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Silas Porter</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Emergencies</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Specializes in diabetic ketoacidosis, thyroid storm, and adrenal crisis.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-silas-porter.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=silas-porter" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 26 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Iris Freeman</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Research</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Focuses on clinical trials and translational endocrine research.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-iris-freeman.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=iris-freeman" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 27 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Felix Mendoza</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine-Dermatology</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Specializes in skin manifestations of endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-felix-mendoza.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=felix-mendoza" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 28 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Daisy Harrington</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Nutrition</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Focuses on nutritional management of endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-daisy-harrington.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=daisy-harrington" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 29 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Atticus Wallace</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Male Hormone Health</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Specializes in testosterone deficiency and male endocrine health.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-atticus-wallace.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=atticus-wallace" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 30 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Lillian Sutton</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Genetics</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Focuses on genetic testing and counseling for endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-lillian-sutton.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=lillian-sutton" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 31 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Jasper Thornton</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Imaging</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Specializes in ultrasound and advanced imaging of endocrine organs.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-jasper-thornton.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=jasper-thornton" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 32 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Violet Ramsey</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Pediatric Diabetes</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Specializes in type 1 diabetes management in children.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-violet-ramsey.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=violet-ramsey" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 33 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Finn Gallagher</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Pharmacology</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Expert in medication management for complex endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-finn-gallagher.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=finn-gallagher" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 34 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Matilda Fletcher</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Thyroid in Pregnancy</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Specializes in thyroid management during pregnancy and postpartum.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-matilda-fletcher.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=matilda-fletcher" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 35 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. August Hayes</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Rehabilitation</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Focuses on recovery after endocrine surgery or illness.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-august-hayes.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=august-hayes" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 36 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Clementine Vaughn</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Education</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Specializes in patient education and self-management of endocrine conditions.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-clementine-vaughn.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=clementine-vaughn" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 37 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Gideon Rhodes</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Aging</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Focuses on hormonal changes with aging and geriatric endocrinology.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-gideon-rhodes.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=gideon-rhodes" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 38 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Ophelia Buchanan</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Immunology</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Specializes in autoimmune endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-ophelia-buchanan.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=ophelia-buchanan" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 39 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Tobias Sinclair</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Telemedicine</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Provides virtual care for endocrine patients with remote monitoring.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-tobias-sinclair.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=tobias-sinclair" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 40 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Beatrix Holloway</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Nursing</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Specializes in nursing care for complex endocrine patients.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-beatrix-holloway.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=beatrix-holloway" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 41 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Phineas Whitaker</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Pathology</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Specializes in biopsy interpretation and endocrine tissue analysis.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-phineas-whitaker.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=phineas-whitaker" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 42 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Rosalind Mercer</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Psychology</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Focuses on mental health aspects of chronic endocrine conditions.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-rosalind-mercer.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=rosalind-mercer" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 43 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Ambrose Donovan</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Epidemiology</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Studies patterns and causes of endocrine diseases in populations.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-ambrose-donovan.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=ambrose-donovan" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 44 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Eugenia Whitmore</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Ethics</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Focuses on ethical issues in endocrine care and research.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-eugenia-whitmore.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=eugenia-whitmore" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 45 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Barnaby Quinn</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Public Health</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Focuses on population-level approaches to endocrine disease prevention.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-barnaby-quinn.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=barnaby-quinn" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 46 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Dorothea Langley</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Policy</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Works on healthcare policy related to endocrine disorders.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-dorothea-langley.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=dorothea-langley" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 47 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Leander Croft</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Technology</span>
+                    <span class="doctor-shift shift-evening">Evening Shift</span>
+                    <p class="doctor-bio">Develops and implements new technologies for endocrine care.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-leander-croft.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=leander-croft" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 48 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Georgiana Phelps</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Anthropology</span>
+                    <span class="doctor-shift shift-night">Night Shift</span>
+                    <p class="doctor-bio">Studies cultural aspects of endocrine disorders and treatments.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-georgiana-phelps.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=georgiana-phelps" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 49 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Peregrine Ashworth</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine History</span>
+                    <span class="doctor-shift shift-morning">Morning Shift</span>
+                    <p class="doctor-bio">Studies the historical development of endocrinology as a field.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-peregrine-ashworth.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=peregrine-ashworth" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor 50 -->
+            <div class="doctor-card">
+                <div class="doctor-image" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="doctor-content">
+                    <h3 class="doctor-name">Dr. Octavia Sterling</h3>
+                    <p class="doctor-title">MD, Endocrinology</p>
+                    <span class="doctor-specialty">Endocrine Futurism</span>
+                    <span class="doctor-shift shift-afternoon">Afternoon Shift</span>
+                    <p class="doctor-bio">Researches emerging trends and future directions in endocrinology.</p>
+                    <div class="doctor-actions">
+                        <a href="dr-octavia-sterling.html" class="btn btn-outline">View Profile</a>
+                        <a href="appointment.html?doctor=octavia-sterling" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <h3 class="sidebar-title">Endocrinology Services</h3>
+        <ul class="sidebar-list">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Diabetes Management</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Thyroid Disorders</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Metabolic Syndrome</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Osteoporosis Treatment</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Hormone Replacement</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Pituitary Disorders</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Adrenal Conditions</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Autoimmune Disorders</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Diabetes Management</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Thyroid Disorders</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Metabolic Syndrome</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Osteoporosis Treatment</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Hormone Replacement</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Pituitary Disorders</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Adrenal Conditions</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Autoimmune Disorders</a></li>
+        </ul>
+        <h3 class="sidebar-title">Patient Resources</h3>
+        <ul class="sidebar-list">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> New Patient Forms</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Insurance Information</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Diabetes Education</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Nutrition Counseling</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Support Groups</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Research Studies</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+// Simple filter functionality demonstration
+document.querySelectorAll('.filter-select').forEach(select => {
+select.addEventListener('change', function() {
+    // In a real implementation, this would filter the doctor cards
+    console.log(`Filter by ${this.previousElementSibling.textContent}: ${this.value}`);
+});
+});
+
+document.querySelector('.reset-btn').addEventListener('click', function() {
+document.querySelectorAll('.filter-select').forEach(select => {
+    select.value = select.querySelector('option').value;
+});
+// In real implementation, this would reset all filters
+console.log('Filters reset');
+});
+</script>
+</body>
+</html>
